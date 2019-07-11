@@ -1,0 +1,81 @@
+REACT
+************
+https://rafaell-lycan.com/2016/entendendo-create-react-app/
+ 
+REACT NATIVE
+****************
+npm i -g react-native-cli
+-- react-native init poc1
+
+npm i -g create-react-native-app
+-- create-react-native-app poc1
+
+yarn global add react-native-cli
+yarn global add create-react-native-app
+
+npm uninstall -g react-native-cli
+npm install -g react-native-cli
+
+
+cd poc1
+npm start - start server
+yarn start - start server
+
+react-native init --version="0.55.4" {projectName}
+npm install -g react-native@0.55.4
+
+
+Com Cli do React-Native
+***************
+react-native run-android
+react-native run-ios
+
+Roda via Expo
+********************
+yarn run android
+npm run android
+===============================================
+opcional
+
+npm i --save-dev eslint-config-rallycoding
+===============================================
+ACESSO HTTP
+npm install --save axios 
+Yarn add axios
+
+ESLINT
+npm install --save eslint-plugin-react
+======================================================
+Informações do usuário
+https://api.github.com/users/desenvolvedorACM
+
+--Todos repositórios
+https://api.github.com/users/desenvolvedorACM/repos
+
+======================================================
+npm start -- --reset-cache
+********************************************
+Snippets
+********************************************
+Auto Import
+Color Highlight
+ESLint
+HTML Class Suggestions
+HTML Snippets
+IntelliSense for CSS class names in HTML
+React Native Snippet
+Simple React Snippets
+vscode-icons
+
+===================================
+** UDEMY **
+===================================
+npm install --save react-native-deprecated-custom-components
+npm install --save react-native-router-flux
+npm install --save firebase
+npm install --save firebase@4.9.1 - em uso
+
+npm install --save redux 
+npm install --save react-redux
+npm install --save redux-thunk
+npm install --save base-64

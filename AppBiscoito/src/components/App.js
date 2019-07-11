@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -9,9 +9,7 @@ import {
   AlertAndroid
 } from 'react-native';
 
-import {
-  Colors
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,15 +19,19 @@ const styles = StyleSheet.create({
     paddingTop: 20
   },
   textoFrase: {
-    backgroundColor: '#dd7b22',
-    fontStyle: 'Italic',
+    color: '#dd7b22',
+    fontStyle: 'italic',
     fontSize: 20,
     margin: 30,
     textAlign: 'center'
+  },
+  img: {
+    width: 300,
+    height: 300
   }
 });
 
-const img = require('./assets/biscoito.png');
+const img = require('../assets/biscoito.png');
 
 class Botao extends Component {
   constructor(props) {
@@ -37,9 +39,10 @@ class Botao extends Component {
 
     this.styles = StyleSheet.create({
       botao: {
-        width: 250,
+        width: 370,
         height: 50,
-        borderColor: props.cor,
+        backgroundColor: '#dd7b22',
+        borderRadius: 25
       },
       btnArea: {
         flex: 1,
@@ -103,11 +106,11 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar bbackgroundColor={ Colors.primary } barStyle="light-content" />
+        <StatusBar bbackgroundColor={ Colors.light } barStyle="light-content" />
 
         <Image  source={ img } style={ styles.img } />
 
-        <Botao cor="#FF0000" onClick={ this.geraFrase } />
+        <Botao cor="#FFF" onClick={ this.geraFrase } />
 
         <Text style={styles.textoFrase}>{ this.state.textoFrase }</Text>
       </View>
