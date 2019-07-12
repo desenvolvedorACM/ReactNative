@@ -15,9 +15,7 @@ class App extends Component {
 
   render() {
     return (
-      <View>
-          <Routing />
-      </View>
+      <Routing />
     );
   }
 }
