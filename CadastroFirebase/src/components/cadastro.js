@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
   TextInput,
   Button,
   Image,
   ToastAndroid,
-  Alert,
-  StyleSheet
+  Alert
 } from 'react-native';
+import firebase from '../config/firebaseConnection';
+import styles from '../config/styles';
 
 
 const img = require('../assets/firebase-logo.png');
@@ -41,9 +41,9 @@ class Cadastro extends Component {
           });
       } else {
         ToastAndroid.showWithGravity(
-          'All Your Base Are Belong To Us',
+          'Preencha todos os campos',
           ToastAndroid.SHORT,
-          ToastAndroid.CENTER,
+          ToastAndroid.BOTTOM,
         );
       }
     } catch (error) {
@@ -53,15 +53,15 @@ class Cadastro extends Component {
 
   render() {
     return (
-      <View style={styles.sectionContainer}>
+      <View style={styles.sectionCadastro}>
 
         <View>
-          <Image source={img} style={styles.img} />
+          <Image source={ img } style={ styles.imgCadastro } />
         </View>
 
         <TextInput
           placeholder="E-mail"
-          style={styles.input}
+          style={styles.inpuCadastro}
           placeholderTextColor='#fff'
           underlineColorAndroid="transparent"
           onChangeText={(email) => { this.setState({ email }); }} />
@@ -70,7 +70,7 @@ class Cadastro extends Component {
           secureTextEntry={true}
           placeholder="Senha"
           placeholderTextColor='#fff'
-          style={styles.input}
+          style={styles.inpuCadastro}
           underlineColorAndroid="transparent"
           onChangeText={(senha) => { this.setState({ senha }); }} />
 
@@ -84,36 +84,3 @@ class Cadastro extends Component {
 }
 
 export default Cadastro;
-
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    flex: 1,
-    padding: 10,
-    paddingTop: 20,
-    justifyContent: 'center'
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#CDCDCD'
-  },
-  sectionHeader: {
-    flex: 1,
-    alignItems: 'center',
-    height: 60
-  },
-  input: {
-    height: 50,
-    backgroundColor: '#836FFF',
-    fontSize: 18,
-    margin: 5,
-    padding: 5,
-    borderRadius: 20,
-    color: '#FFF'
-  },
-  img: {
-    height: 100,
-    width: 380
-  }
-});

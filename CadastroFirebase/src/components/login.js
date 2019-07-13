@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import {
     View,
     TextInput,
-    Button,
     Image,
     ToastAndroid,
     Alert,
-    StyleSheet
+    TouchableOpacity,
+    Text
 } from 'react-native';
 
-import firebase from '../config/firebaseConnection';
 import { Actions } from 'react-native-router-flux';
+import firebase from '../config/firebaseConnection';
+import styles from '../config/styles';
 
 
 const img = require('../assets/firebase-logo.png');
@@ -80,9 +81,17 @@ class Login extends Component {
                     underlineColorAndroid="transparent"
                     onChangeText={(senha) => { this.setState({ senha }); }} />
 
-                <View style={{ paddingTop: 10, flex: 1, flexDirection: 'row', margin: 10 }}>
-                    <Button title="Logar" onPress={this.Logar} />
-                    <Button title="Cadastrar" onPress={Actions.formCadastro()} />
+
+                <View style={styles.btnArea}>
+
+                    <TouchableOpacity style={styles.botao} onPress={this.Logar} >
+                        <Text style={styles.btnTexto}>LOGAR</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.botao} onPress={() => { Actions.formCadastro(); }} >
+                        <Text style={styles.btnTexto}>CADASTRO</Text>
+                    </TouchableOpacity>
+
                 </View>
 
             </View>
@@ -93,7 +102,7 @@ class Login extends Component {
 export default Login;
 
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
     sectionContainer: {
         flex: 1,
         padding: 10,
@@ -124,4 +133,4 @@ const styles = StyleSheet.create({
         height: 100,
         width: 380
     }
-});
+}); */
