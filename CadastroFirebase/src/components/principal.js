@@ -2,13 +2,26 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
-    FlatList
+    FlatList,
+    YellowBox,
+    Button,
+    Alert
 } from 'react-native';
 
 import firebase from '../config/firebaseConnection';
+import styles from '../config/styles';
+import { Actions } from 'react-native-router-flux';
 
-
+class Listagem extends Component {
+    render() {
+        return (
+            <View style={styles.sectionLista}>
+                <Text>Nome: {this.props.data.nome}</Text>
+                <Text>Cargo: {this.props.data.cargo}</Text>
+            </View>
+        );
+    }
+}
 
 class Principal extends Component {
     constructor(props) {
@@ -17,8 +30,11 @@ class Principal extends Component {
         this.state = { lista: [] };
     }
 
-    componentWillMount() {
-        let usuarios = firebase.database().ref('usuarios');
+    componentDidMount() {
+        this.carregaUsuarios();
+    }
+
+    carregaUsuarios() {
         let state = this.state;
         state.lista = [];
 
@@ -35,9 +51,25 @@ class Principal extends Component {
         });
     }
 
+    Deslogar() {
+        firebase.auth().signOut()
+            .then(resp => {
+                Alert.alert('Aviso', `Usuário deslogado com sucesso!`);
+                Actions.formLogin();
+            }).catch(error => {
+                Alert.alert('Erro', `Error Cod. ${error.code}`);
+            });
+    }
+
     render() {
         return (
-            <View style={styles.sectionContainer}>
+            <View style={styles.sectionContainerP}>
+
+                <View style={styles.sectionHeaderP}>
+                    <Text style={styles.sectionTitleP}>Lista de usuários - {this.state.lista.length}</Text>
+                    <Button title="Deslogar" onPress={this.Deslogar} />
+                </View>
+
                 <FlatList
                     data={this.state.lista}
                     renderItem={({ item }) => <Listagem data={item} />} />
@@ -48,30 +80,10 @@ class Principal extends Component {
 
 export default Principal;
 
+YellowBox.ignoreWarnings([
+    'Warning: componentWillMount is deprecated',
+    'Warning: componentWillReceiveProps is deprecated',
+    'Module RCTImageLoader requires',
+]);
 
-class Listagem extends Component {
-    render() {
-        return (
-            <View>
-                <Text>{ this.props.data.nome}</Text>
-                <Text>{ this.props.data.cargo}</Text>
-            </View>
-        );
-    }
-}
 
-const styles = StyleSheet.create({
-    sectionContainer: {
-        flex: 1,
-        padding: 10
-    },
-    sectionHeader: {
-        backgroundColor: '#CDCDCD',
-        height: 60
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-        color: '#DAA520'
-    }
-});

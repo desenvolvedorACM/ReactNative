@@ -26,7 +26,7 @@ class Login extends Component {
 
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                Alert.alert('Autenticação', 'Usuário logado!');
+                Actions.formPrincipal();
             }
         });
     }
@@ -43,7 +43,7 @@ class Login extends Component {
                         if (error.code == 'auth/wrong-password') {
                             Alert.alert('Autenticação', 'Senha incorreta!');
                         } else {
-                            Alert.alert('Ops', `Tente novamente mais tarde.`);
+                            Alert.alert('Ops', `${error.code} Tente novamente mais tarde.`);
                         }
                     });
             } else {

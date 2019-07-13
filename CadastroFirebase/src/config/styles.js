@@ -71,18 +71,28 @@ const styles = StyleSheet.create({
         flex: 1
     },
     sectionHeaderP: {
-        backgroundColor: '#808080',
-        height: 50,
+        backgroundColor: '#483D8B',
+        height: 55,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-around',
+        flexDirection: 'row'
     },
     sectionTitleP: {
         fontSize: 20,
         fontWeight: '600',
         color: '#FFF'
     },
-    nome: {
-        color: '#000'
+    sectionLista: {
+        backgroundColor: '#CDCDCD',
+        flex: 1,
+        height: 50,
+        borderRadius: 20,
+        margin: 10,
+        marginLeft: 5,
+        padding: 5,
+        borderWidth: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'center'
     }
 });
 
