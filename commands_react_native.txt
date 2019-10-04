@@ -2,16 +2,19 @@
 choco install nodejs.install python2 jdk8
 npm install -g react-native-cli
 
-
-react-native init newproject --version react-native@0.18.1
+1 - npm install -g react-native-cli
+2 - react-native -v
+3 - react-native init --version 0.56.0 MyNewApp
+4 - react-native run-android
+5 - gradlew assembleDebug gera o build
+6 - adb install app-debug.apk
+=============================================
 react-native init --version 0.56.0 MyNewApp
 
 npm i --save firebase@5.0.3
-npm i --save firebase@4.8.0
 npm i --save react-native-router-flux
 
 import * as firebase from 'Firebase';
-
 =============================================
 sudo chmod 777 /home/nome_usuario/android-studio/gradle/gradle-4.4/bin/gradle
 
