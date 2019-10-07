@@ -81,7 +81,7 @@ export default class HomeScreen extends Component {
         productInfo,
         page
       });
-      
+
       console.log(docs);
     } catch (error) {
       console.warn(`${error}`);
@@ -93,7 +93,9 @@ export default class HomeScreen extends Component {
     <View style={productContainer}>
       <Text style={productTitle}>{item.title}</Text>
       <Text style={productDescription}>{item.description}</Text>
-      <TouchableOpacity style={productButton} onPress={() => { }}>
+      <TouchableOpacity
+        style={productButton}
+        onPress={() => { this.props.navigation.navigate('product', { product: item }); }}>
         <Text style={productButtonText}>Acessar</Text>
       </TouchableOpacity>
     </View>
