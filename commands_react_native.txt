@@ -1,13 +1,15 @@
 ﻿
 choco install nodejs.install python2 jdk8
 npm install -g react-native-cli
-
+==============================================
 1 - npm install -g react-native-cli
 2 - react-native -v
 3 - react-native init --version 0.56.0 MyNewApp
 4 - react-native run-android
 5 - gradlew assembleDebug gera o build
 6 - adb install app-debug.apk
+7 - yarn add react-navigation@2.18.3 ou npm install --save react-navigation@2.18.3
+8 - yarn add axios ou npm install --save axios.
 =============================================
 react-native init --version 0.56.0 MyNewApp
 
@@ -42,3 +44,5 @@ Declare -xp
 local.properties
 
 sdk.dir = /Users/USERNAME/Library/Android/sdk
+
+https://rocketseat-node.herokuapp.com/api
