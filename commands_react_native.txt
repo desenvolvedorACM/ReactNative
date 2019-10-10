@@ -4,36 +4,18 @@ npm install -g react-native-cli
 ==============================================
 1 - npm install -g react-native-cli
 2 - react-native -v
-3 - react-native init --version 0.56.0 MyNewApp
+3 - react-native init --version="0.56.0" MyNewApp
 4 - react-native run-android
 5 - gradlew assembleDebug gera o build
 6 - adb install app-debug.apk
 7 - yarn add react-navigation@2.18.3 ou npm install --save react-navigation@2.18.3
 8 - yarn add axios ou npm install --save axios.
 =============================================
-react-native init --version 0.56.0 MyNewApp
-
 npm i --save firebase@5.0.3
 npm i --save react-native-router-flux
-
-import * as firebase from 'Firebase';
+npm i --save react-native-navigation
 =============================================
 sudo chmod 777 /home/nome_usuario/android-studio/gradle/gradle-4.4/bin/gradle
-
-export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_171
-export PATH=$PATH:$JAVA_HOME/bin
-
-export ANDROID_HOME=/Users/alexandremarques/Library/Android/sdk
-
-export ANDROID_SDK_ROOT=$ANDROID_HOME
-
-export PATH=$PATH:$ANDROID_HOME/tools
-
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-export PATH=$PATH:$ANDROID_HOME/build-tools
-
-export PATH=$PATH:/home/alexandremarques/android-studio/gradle/gradle-4.4/bin
 
 View all variables
 
