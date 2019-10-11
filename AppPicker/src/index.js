@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     containerSwitch: {
         flex: 1,
-        backgroundColor: '#88F566',
+        backgroundColor: '#88DDFF',
         color: '#000'
     },
     textoResultado: {
@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 });
+
+console.disableYellowBox = true;
 
 const { container, containerPicker, textoResultado, containerSlider, textoHeader, containerSwitch } = styles;
 
@@ -96,9 +98,10 @@ class App extends Component {
                     <Switch
                         value={this.state.status}
                         thumbTintColor="#000"
-                        onTintColor="#FF0000"
+                        onTintColor="#FF0"
                         onValueChange={this.mudaStatus} />
-                    <Text style={textoResultado}>{this.state.status ? 'Ativo' : 'Inativo'}}</Text>
+
+                    <Text style={textoResultado}>{this.state.status ? 'Ativo' : 'Inativo'}</Text>
                 </View>
             </View >
         );
