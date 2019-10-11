@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    StyleSheet,
+    Button, Alert
+} from 'react-native';
 
 const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        input: {
-            margin: 20,
-            padding: 10,
-            borderWidth: 1,
-            borderColor: '#000000',
-            heigth: 45
-        },
-        texto: {
-            marginTop: 15,
-            fontSize: 25,
-            color: '#000',
-            textAlign: 'center'
-        }
+        padding: 10,
+        justifyContent: 'center'
+    },
+    input: {
+        margin: 20,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#000000',
+        height: 45
+    },
+    texto: {
+        marginTop: 15,
+        fontSize: 25,
+        color: '#000',
+        textAlign: 'center'
     }
 });
 
@@ -38,10 +46,14 @@ export default class App extends Component {
     }
 
     enviar = () => {
-        const { texto, textoInput } = this.state;
+        let state = this.state;
 
-        texto = `Olá, seu nome é ${textoInput}`;
-        this.setState({ texto });
+        if (state.textoInput === '') {
+            Alert.alert('App', 'Preencha o campo nome');
+        } else {
+            state.texto = `Olá, seu nome é ${state.textoInput}`;
+            this.setState(state); 
+        }
     }
 
     render() {
