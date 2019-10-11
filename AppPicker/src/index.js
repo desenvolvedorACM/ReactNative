@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF566',
         color: '#000'
     },
+    containerSwitch: {
+        flex: 1,
+        backgroundColor: '#88F566',
+        color: '#000'
+    },
     textoResultado: {
         fontSize: 35,
         color: 'red',
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const { container, containerPicker, textoResultado, containerSlider, textoHeader } = styles;
+const { container, containerPicker, textoResultado, containerSlider, textoHeader, containerSwitch } = styles;
 
 class App extends Component {
     constructor(props) {
@@ -43,6 +48,7 @@ class App extends Component {
         this.state = {
             pizzaSelecionada: 0,
             valor: 0,
+            status: false,
             pizzas: [
                 { nome: 'Strogonoff', valor: 39.90 },
                 { nome: 'Jardineira', valor: 15 },
@@ -50,6 +56,10 @@ class App extends Component {
                 { nome: 'Calabresa', valor: 19.90 }
             ]
         };
+    }
+
+    mudaStatus = (valorSwith) => {
+        this.setState({ status: valorSwith })
     }
 
     render() {
@@ -79,6 +89,16 @@ class App extends Component {
                         value={this.state.valorSlider} />
 
                     <Text style={textoResultado}>Sua idade é: {this.state.valor.toFixed(0)}</Text>
+                </View>
+                <View style={containerSwitch}>
+                    <Text style={textoHeader}>Exemplo de Switch</Text>
+
+                    <Switch
+                        value={this.state.status}
+                        thumbTintColor="#000"
+                        onTintColor="#FF0000"
+                        onValueChange={this.mudaStatus} />
+                    <Text style={textoResultado}>{this.state.status ? 'Ativo' : 'Inativo'}}</Text>
                 </View>
             </View >
         );
