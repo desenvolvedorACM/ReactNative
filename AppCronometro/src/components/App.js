@@ -7,6 +7,43 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#00aeef'
+  },
+  timer: {
+    marginTop: -160,
+    color: '#FFFFFF',
+    fontSize: 72,
+    fontWeight: 'bold',
+  },
+  btnArea: {
+    flexDirection: 'row',
+    marginTop: 70,
+    height: 40
+  },
+  botao: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    height: 40,
+    margin: 17,
+    borderRadius: 9
+  },
+  btnTexto: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#00aeef'
+  }
+});
+
+
 export default class App extends Component {
 
   constructor(props) {
@@ -20,6 +57,10 @@ export default class App extends Component {
     //variavel do timer do relogio
     this.timer = null;
 
+    this.bindFunctions();
+  }
+
+  bindFunctions = () => {
     this.vai = this.vai.bind(this);
     this.limpar = this.limpar.bind(this);
   }
@@ -45,11 +86,9 @@ export default class App extends Component {
       }, 100);
 
       state.botao = "PARAR";
-
     }
 
     this.setState(state);
-
   }
 
   limpar() {
@@ -96,40 +135,4 @@ export default class App extends Component {
 
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#00aeef'
-  },
-  timer: {
-    marginTop: -160,
-    color: '#FFFFFF',
-    fontSize: 72,
-    fontWeight: 'bold',
-  },
-  btnArea: {
-    flexDirection: 'row',
-    marginTop: 70,
-    height: 40
-  },
-  botao: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    height: 40,
-    margin: 17,
-    borderRadius: 9
-  },
-  btnTexto: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#00aeef'
-  }
-
-
-});
 
