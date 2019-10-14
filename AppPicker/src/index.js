@@ -7,6 +7,8 @@ import {
     Slider,
     StyleSheet
 } from 'react-native';
+import './config/StatusBarConfig';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -97,7 +99,7 @@ class App extends Component {
 
                     <Switch
                         value={this.state.status}
-                        thumbTintColor="#000"
+                        thumbColor="#FF0000"
                         onTintColor="#FF0"
                         onValueChange={this.mudaStatus} />
 
