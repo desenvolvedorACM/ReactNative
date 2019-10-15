@@ -1,36 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import Routes from '../src/routes';
+import './config/StatusBarConfig';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
 
-        this.configFireBase();
-    }
-
-    configFireBase = () => {
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyC45sr-O5jNp5aLruMWkZwXwY4UVtTPdJU",
-            authDomain: "meuapp-7beb4.firebaseapp.com",
-            databaseURL: "https://meuapp-7beb4.firebaseio.com",
-            projectId: "meuapp-7beb4",
-            storageBucket: "meuapp-7beb4.appspot.com",
-            messagingSenderId: "472416385671",
-            appId: "1:472416385671:web:1fb0039e0cd80a85"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    }
-
-    render() {
-        return (
-            <View>
-                <Text> index </Text>
-            </View>
-        );
-    }
-}
+const App = ()=> <Routes />
 
 export default App;
