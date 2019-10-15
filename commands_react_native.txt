@@ -10,6 +10,8 @@ npm install -g react-native-cli
 6 - adb install app-debug.apk
 7 - yarn add react-navigation@2.18.3 ou npm install --save react-navigation@2.18.3
 8 - yarn add axios ou npm install --save axios.
+
+npm uninstall -g react-native-cli
 =============================================
 npm i --save firebase@5.0.3
 npm i --save react-native-router-flux
