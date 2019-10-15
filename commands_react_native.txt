@@ -15,7 +15,6 @@ npm uninstall -g react-native-cli
 =============================================
 npm i --save firebase@5.0.3
 npm i --save react-native-router-flux
-npm i --save react-native-navigation
 =============================================
 sudo chmod 777 /home/nome_usuario/android-studio/gradle/gradle-4.4/bin/gradle
 
