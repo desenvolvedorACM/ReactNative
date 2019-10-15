@@ -8,7 +8,7 @@ import {
     Alert,
     TouchableOpacity
 } from 'react-native';
-import * as firebase from "./config/FireBaseConnection";
+import * as firebase from "firebase";
 import { Listagem } from './components/Listagem';
 import './config/StatusBarConfig';
 
@@ -62,11 +62,11 @@ class App extends Component {
             cargo: ''
         };
 
-        //this.configFireBase();
+        this.configFireBase();
     }
 
     componentDidMount() {
-        //this.listaRegistros();
+        this.listaRegistros();
     }
 
     listaRegistros = () => {
