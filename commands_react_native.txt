@@ -11,6 +11,10 @@ npm install -g react-native-cli
 7 - yarn add react-navigation@2.18.3 ou npm install --save react-navigation@2.18.3
 8 - yarn add axios ou npm install --save axios.
 
+npm install --save react-navigation
+npm install --save react-native-gesture-handler
+react-native link react-native-gesture-handler
+
 npm uninstall -g react-native-cli
 =============================================
 npm i --save firebase@5.0.3
