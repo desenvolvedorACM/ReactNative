@@ -18,7 +18,7 @@ class cadastro extends Component {
         return (
             <View style={{ flex: 1, padding: 12 }}>
                 <Text style={{ fontSize: 25, textAlign: 'center', marginBottom: 12 }}> cadastro </Text>
-                <Button title="Voltar inicio" onPress={() => { this.props.navigation.popToTop() }} />
+                <Button title="Início" onPress={() => { this.props.navigation.popToTop() }} />
             </View>
         );
     }

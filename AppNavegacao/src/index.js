@@ -22,7 +22,7 @@ App.navigationOptions = {
   headerTintColor: '#ff0000'
 }
 
-const Routes = createAppContainer(
+const StackNavigator = createAppContainer(
   createStackNavigator({
     Home: { screen: App },
     contato: { screen: contato },
@@ -31,4 +31,4 @@ const Routes = createAppContainer(
     mode: 'modal'
   }));
 
-export default Routes;
+export default StackNavigator;

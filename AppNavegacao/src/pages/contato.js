@@ -15,8 +15,9 @@ export default class contato extends Component {
 
     render() {
         const { nome, idade } = this.props.navigation.state.params;
+        
         return (
-            <View style={{ flex: 1, backgroundColor: '#DDFF66', padding: 10 }}>
+            <View style={{ flex: 1, backgroundColor: '#228888', padding: 10 }}>
                 <View style={{ padding: 12, margintop: 15, alignItems: 'flex-start'}}>
                     <Text style={{ textAlign: 'center', fontSize: 20 }}> contato </Text>
 
