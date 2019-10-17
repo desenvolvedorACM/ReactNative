@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 
-const { container, sectionContainer, sectionText, sectionHeader,sectionHeaderText } = styles;
+const { container, sectionContainer, sectionText, sectionHeader, sectionHeaderText } = styles;
 
 
 class App extends Component {
@@ -75,15 +75,13 @@ class App extends Component {
     }
   }
 
-  renderdata(item) {
-    return (
-      <View style={sectionContainer}>
-        <Text style={sectionText}>ID: {item.id}</Text>
-        <Text style={sectionText}>NOME: {item.nome}</Text>
-        <Text style={sectionText}>EMAIL: {item.email}</Text>
-      </View>
-    )
-  }
+  renderItem = (item) => (
+    <View style={sectionContainer}>
+      <Text style={sectionText}>ID: {item.id}</Text>
+      <Text style={sectionText}>NOME: {item.nome}</Text>
+      <Text style={sectionText}>EMAIL: {item.email}</Text>
+    </View>
+  )
 
   render() {
     return (
@@ -94,7 +92,7 @@ class App extends Component {
         </View>
         <FlatList
           data={this.state.listaAgenda}
-          renderItem={({ item }) => this.renderdata(item)} />
+          renderItem={({ item }) => this.renderItem(item)} />
       </View>
     );
   }
