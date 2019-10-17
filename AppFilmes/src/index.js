@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Api from './services/Api';
 import Filme from './components/Filme';
+import Loading from './components//Loading';
 
 
 const styles = StyleSheet.create({
@@ -38,7 +39,7 @@ class App extends Component {
         this.state = {
             filmes: [],
             errorMessage: '',
-            loading: false
+            loading: true
         };
     }
 
@@ -51,6 +52,7 @@ class App extends Component {
             const response = await Api.get('rn-filmes/?api=filmes');
             console.log(response);
             this.setState({ filmes: response.data });
+            this.setState({ loading: false })
 
         } catch (error) {
             this.setState({ errorMessage: `Erro: ${error}` });
@@ -58,19 +60,26 @@ class App extends Component {
     }
 
     render() {
-        return (
-            <View style={container}>
-                <View style={header}>
-                    <Text style={headerText}> Filmes recomendados </Text>
-                </View>
+        if (this.state.loading) {
+            return (
+                <Loading />
+            )
+        } else {
+            return (
+                <View style={container}>
+                    <View style={header}>
+                        <Text style={headerText}> Filmes recomendados </Text>
+                    </View>
 
-                <FlatList
-                    data={this.state.filmes}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item }) => <Filme data={item} />}
-                />
-            </View>
-        );
+                    <FlatList
+                        data={this.state.filmes}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item }) => <Filme data={item} />}
+                    />
+                </View>
+            );
+        }
+
     }
 }
 
