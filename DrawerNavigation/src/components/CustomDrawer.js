@@ -20,7 +20,9 @@ export default class CustomDrawer extends Component {
                 </View>
 
                 <ScrollView>
-                    <DrawerItems { ...this.props } />
+                    <Text>Item1</Text>
+                    <Text>Item1</Text>
+                    <Text>Item1</Text>
                 </ScrollView>
 
                 <View style={{ marginTop: 20, width: '100%' }}>

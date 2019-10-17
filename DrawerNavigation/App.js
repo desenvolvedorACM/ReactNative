@@ -13,7 +13,6 @@ const Routes = createAppContainer(
     Contato: { screen: Contato },
   }, {
     initialRouteName: 'Contato',
-    drawerWidth: 230,
     drawerBackgroundColor: '#373737',
     contentComponent: CustomDrawer
   })
