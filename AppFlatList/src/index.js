@@ -11,15 +11,21 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignContent:'center',
+    justifyContent: 'center'
   },
   sectionContainer: {
     flex: 1,
-    height: 50,
-    backgroundColor: '#CDCDCD',
-    borderRadius: 20,
-    margin: 5,
-    justifyContent: 'center'
+    height: 80,
+    borderWidth: 1,
+    borderColor: '#808080',
+    backgroundColor: '#DDD',
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
   },
   sectionText: {
     fontSize: 14,
@@ -27,12 +33,14 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 14,
+    fontWeight: 'bold',
     color: '#000'
   },
   sectionHeader: {
-    height: 50,
-    backgroundColor: '#708090',
+    backgroundColor: '#8055FF',
     alignItems: 'center',
+    height: 50,
+    justifyContent: 'center'
   }
 });
 
@@ -86,7 +94,7 @@ class App extends Component {
   render() {
     return (
       <View style={container}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" backgroundColor="#FF8899" />
         <View style={sectionHeader}>
           <Text style={sectionHeaderText}>HEADER</Text>
         </View>
