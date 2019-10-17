@@ -21,6 +21,10 @@ const { container } = styles;
 
 class Filme extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+    
     render() {
         return (
             <View style={container} >
@@ -31,7 +35,7 @@ class Filme extends Component {
                     <ImageBackground
                         resizeMode="cover"
                         source={{ uri: this.props.data.foto }}
-                        style={{ height: 150 }}>
+                        style={{ height: 150, marginBottom: 5 }}>
 
                         <View style={{
                             flex: 1,

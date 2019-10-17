@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 25,
         color: '#FFF',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 });
 
@@ -36,7 +37,8 @@ class App extends Component {
         super(props);
         this.state = {
             filmes: [],
-            errorMessage: ''
+            errorMessage: '',
+            loading: false
         };
     }
 
@@ -65,7 +67,7 @@ class App extends Component {
                 <FlatList
                     data={this.state.filmes}
                     keyExtractor={item => item.id.toString()}
-                    renderItem={(item) => <Filme data={item} />}
+                    renderItem={({ item }) => <Filme data={item} />}
                 />
             </View>
         );
