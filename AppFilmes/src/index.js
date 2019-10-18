@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import {
-    Platform,
     StyleSheet,
     Text,
     View,
     FlatList,
-    TouchableHighlight,
-    ImageBackground
 } from 'react-native';
 import Api from './services/Api';
 import Filme from './components/Filme';
