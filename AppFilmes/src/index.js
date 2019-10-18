@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     header: {
-        height: 80,
-        backgroundColor: '#007F98',
+        height: 60,
+        backgroundColor: '#007F88',
         justifyContent: 'center'
     },
     headerText: {
