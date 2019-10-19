@@ -1,7 +1,42 @@
-﻿MYAPP_RELEASE_STORE_FILE=
+﻿gerar uma certificado via command ou via android studio:
+
+keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+
+
+
+1° adicionar no gradle.properties as variaveis abaixo:
+
+MYAPP_RELEASE_STORE_FILE=
 MYAPP_RELEASE_KEY_ALIAS=
 MYAPP_RELEASE_STORE_PASSWORD=
 MYAPP_RELEASE_KEY_PASSWORD=
 
---gerar release
+
+2° acessar dentro da pasta App o build.gradle e bundleInRelease: true e criar aqui
+project.ext.react
+
+
+3º em defaultConfig criar outro objeto para verificar as variaveis
+
+ signingConfigs {
+         release {
+            if(project.hasProperty('MYAPP_RELEASE_STORE_FILE')){
+                storeFile file("MYAPP_RELEASE_STORE_FILE")
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
+
+4° adicionar em buildTypes
+signingConfig signingConfigs.release
+
+
+5° rodar via command:
 gradlew assembleRelease
+=================================
+chaveApp.keystore
+Alias: chaveApp
+Password: 123456
