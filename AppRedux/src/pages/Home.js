@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     botao: {
-        backgroundColor: '#FF0000',
+        backgroundColor: '#CC5566',
         padding: 8,
         width: 250,
         borderRadius: 3,

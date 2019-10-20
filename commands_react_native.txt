@@ -15,6 +15,9 @@ npm install --save react-navigation
 npm install --save react-native-gesture-handler
 react-native link react-native-gesture-handler
 
+npm install --save react-redux@5.1.1
+npm install --save redux
+
 npm uninstall -g react-native-cli
 =============================================
 npm i --save firebase@5.0.3

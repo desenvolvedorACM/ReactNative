@@ -2,20 +2,20 @@
 console.disableYellowBox = true;
 
 import React, { Component } from 'react';
-import { createAppNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-//import { Provider } from 'react-redux';
-//import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
-//import Reducers from './src/Reducers';
+import Reducers from './Reducers';
 
-//let store = createStore(Reducers);
+let store = createStore(Reducers);
 
-const stackNavigator = createAppNavigator(
+const Navegador = createAppContainer(
     createStackNavigator({
         Home: {
             screen: Home
@@ -26,6 +26,23 @@ const stackNavigator = createAppNavigator(
         Login: {
             screen: Login
         }
+    }, {
+        mode: 'modal',
+        headerStyle: {
+            backgroundColor: '#CDCDCD'
+        },
+        headerTintColor: '#CD0066'
     }));
 
-export default stackNavigator;
+
+export default class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <Navegador />
+            </Provider>
+        );
+    }
+}
+
+

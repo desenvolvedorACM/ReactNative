@@ -8,13 +8,14 @@ import {
     Button
 } from 'react-native';
 
-//import { connect } from 'react-redux';
-////import { editEmail, editSenha } from './actions/AuthActions';
+
+import { connect } from 'react-redux';
+import { editEmail, editSenha } from '../actions/AuthAction';
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center'
     },
     nomeInput: {
@@ -23,19 +24,25 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     input: {
-        height: 40,
+        height: 50,
         backgroundColor: '#CCCCCC',
         padding: 5,
-        width: 250,
-        marginBottom: 10
+        marginBottom: 10,
+        borderRadius: 10
     }
 });
 
+
 export class Cadastro extends Component {
 
-    static navigationOptions = {
-        title: 'Cadastro',
-
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'Login',
+            headerStyle: {
+                backgroundColor: '#000'
+            },
+            headerTintColor: '#FFF'
+        }
     }
 
     constructor(props) {
@@ -52,21 +59,23 @@ export class Cadastro extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.nomeInput}>Email:</Text>
-                <TextInput
-                    value={this.props.email}
-                    underlineColorAndroid="transparent"
-                    style={styles.input}
-                    onChangeText={() => { }} />
+                <View style={{ padding: 20 }}>
+                    <Text style={styles.nomeInput}>Email:</Text>
+                    <TextInput
+                        value={this.props.email}
+                        underlineColorAndroid="transparent"
+                        style={styles.input}
+                        onChangeText={(email) => this.props.editEmail(email)} />
 
-                <Text style={styles.nomeInput}>Senha:</Text>
-                <TextInput
-                    value={this.props.senha}
-                    underlineColorAndroid="transparent"
-                    secureTextEntry={true} style={styles.input}
-                    onChangeText={() => { }} />
+                    <Text style={styles.nomeInput}>Senha:</Text>
+                    <TextInput
+                        value={this.props.senha}
+                        underlineColorAndroid="transparent"
+                        secureTextEntry={true} style={styles.input}
+                        onChangeText={(senha) => this.props.editSenha(senha)} />
 
-                <Button title="Cadastrar" onPress={this.cadastrar} />
+                    <Button title="Cadastrar" onPress={this.cadastrar} />
+                </View>
 
             </View>
         );
@@ -74,4 +83,12 @@ export class Cadastro extends Component {
 }
 
 
-export default Cadastro;
+const mapStateToProps = (state) => {
+    return {
+        email: state.auth.email,
+        senha: state.auth.senha
+    };
+};
+
+export default connect(mapStateToProps, { editEmail, editSenha })(Cadastro);
+
