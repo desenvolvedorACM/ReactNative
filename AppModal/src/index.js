@@ -23,6 +23,13 @@ const styles = StyleSheet.create({
     modalTexto: {
         fontSize: 25,
         color: '#000'
+    },
+    modalContainer: {
+        margin: 15,
+        flex: 1,
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
@@ -48,7 +55,7 @@ export default class App extends Component {
                     transparent={true}
                     visible={this.state.modalVisible}>
 
-                    <View style={{ margin: 15, flex: 1, padding: 10, justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={Modalcontainer}>
                         <ModalEntrar fechar={() => {
                             this.setModalVisible(!this.state.modalVisible);
                         }} />
