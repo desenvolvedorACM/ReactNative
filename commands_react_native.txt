@@ -12,6 +12,7 @@ npm install -g react-native-cli
 8 - yarn add axios ou npm install --save axios.
 
 npm install --save react-navigation
+npm install --save react-navigation-stack
 npm install --save react-native-gesture-handler
 react-native link react-native-gesture-handler
 
