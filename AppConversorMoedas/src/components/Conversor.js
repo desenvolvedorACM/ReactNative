@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import Api from '../services/Api';
 
+console.disableYellowBox = true;
+
 export default class Conversor extends Component {
 
     constructor(props) {
@@ -26,13 +28,18 @@ export default class Conversor extends Component {
         this.converter = this.converter.bind(this);
     }
 
-    converter() {
+    converter = async () => {
         try {
             let de_para = this.state.moedaA + '_' + this.state.moedaB
             let url = '?q=' + de_para + '&compact=ultra&apiKey=7c5ef455b88d735bc6ad'
-            const response = Api.get(url);
+            const response = await Api.get(url);
 
-            console.log(response);
+            console.log(response.data);
+            let cotacao = response.data.USD_BRL;
+
+            let state = this.state;
+            state.valorConvertido = (cotacao * parseFloat(this.state.moedaB_valor)).toFixed(2);
+            this.setState(state);
 
         } catch (error) {
             this.setState({ errorMessage: `Erro: ${error}` });
@@ -54,11 +61,11 @@ export default class Conversor extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.titulo}>USD Para BRL</Text>
+                <Text style={styles.titulo}>{this.props.moedaA} Para BRL</Text>
 
                 <TextInput style={styles.areaInput}
                     underlineColorAndroid="transparent"
-                    placeholder="USD"
+                    placeholder={this.state.moedaA}
                     keyboardType="numeric"
                     onChangeText={(moedaB_valor) => this.setState({ moedaB_valor })}
                 />
@@ -68,7 +75,12 @@ export default class Conversor extends Component {
                 </TouchableHighlight>
 
                 <Text style={styles.valorConvertido}>{(this.state.valorConvertido == 0) ? '' : this.state.valorConvertido}</Text>
-                <Text style={{ color: '#FF0000, fontSize: 17', textAlign: 'center'}}>{(this.state.errorMessage != '') ? this.state.errorMessage : ''}</Text>
+
+                <Text style={{
+                    color: '#000', fontSize: 20, 
+                    textAlign: 'center',
+                    backgroundColor: '#FF0000'
+                }}>{(this.state.errorMessage != '') ? this.state.errorMessage : ''}</Text>
             </View>
         );
     }
