@@ -1,7 +1,7 @@
-﻿gerar uma certificado via command ou via android studio:
+﻿Gerar um certificado via command ou 
+via android studio:
 
 keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
-
 
 
 1° adicionar no gradle.properties as variaveis abaixo:
@@ -35,8 +35,14 @@ signingConfig signingConfigs.release
 
 
 5° rodar via command:
+Entrar dentro da pasta do android e rodar o comando abaixo:
+
 gradlew assembleRelease
 =================================
 chaveApp.keystore
 Alias: chaveApp
+Password: 123456
+
+animationChaveApp.keystore
+Alias: animationChaveApp
 Password: 123456
