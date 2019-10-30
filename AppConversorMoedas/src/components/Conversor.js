@@ -12,6 +12,48 @@ import Api from '../services/Api';
 
 console.disableYellowBox = true;
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    titulo: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#000'
+    },
+    areaInput: {
+        width: 280,
+        height: 45,
+        backgroundColor: '#CCC',
+        marginTop: 15,
+        textAlign: 'center',
+        fontSize: 20,
+        color: '#000',
+        borderRadius: 5
+    },
+    botaoArea: {
+        width: 150,
+        height: 45,
+        backgroundColor: '#FF0000',
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 15
+    },
+    botaoTexto: {
+        fontSize: 20,
+        color: '#FFF'
+    },
+    valorConvertido: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#000',
+        marginTop: 15
+    }
+});
+
 export default class Conversor extends Component {
 
     constructor(props) {
@@ -77,7 +119,7 @@ export default class Conversor extends Component {
                 <Text style={styles.valorConvertido}>{(this.state.valorConvertido == 0) ? '' : this.state.valorConvertido}</Text>
 
                 <Text style={{
-                    color: '#000', fontSize: 20, 
+                    color: '#000', fontSize: 20,
                     textAlign: 'center',
                     backgroundColor: '#FF0000'
                 }}>{(this.state.errorMessage != '') ? this.state.errorMessage : ''}</Text>
@@ -86,44 +128,4 @@ export default class Conversor extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    titulo: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: '#000'
-    },
-    areaInput: {
-        width: 280,
-        height: 45,
-        backgroundColor: '#CCC',
-        marginTop: 15,
-        textAlign: 'center',
-        fontSize: 20,
-        color: '#000',
-        borderRadius: 5
-    },
-    botaoArea: {
-        width: 150,
-        height: 45,
-        backgroundColor: '#FF0000',
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 15
-    },
-    botaoTexto: {
-        fontSize: 20,
-        color: '#FFF'
-    },
-    valorConvertido: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: '#000',
-        marginTop: 15
-    }
-});
+
