@@ -21,52 +21,45 @@ const { container } = styles;
 class App extends Component {
 
     static navigationOptions = {
-        header: null
+        title: 'Pagina 3',
+        headerStyle: {
+            backgroundColor: '#2233DD'
+        },
+        headerTintColor: '#FFF'
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            widthAnimation: new Animated.Value(300),
-            heightAnimation: new Animated.Value(300),
-            opacidade: new Animated.Value(1)
+            widthAnimation: new Animated.Value(150),
+            heightAnimation: new Animated.Value(35),
         };
 
-        Animated.sequence([
-            Animated.timing(
-                this.state.opacidade,
-                {
-                    toValue: 0.6,
-                    duration: 1500
-                }
-            ),
-
-            Animated.parallel([
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(
+                    this.state.widthAnimation,
+                    {
+                        toValue: 400,
+                        duration: 1000
+                    }
+                ),
                 Animated.timing(
                     this.state.heightAnimation,
                     {
-                        toValue: 100,
-                        duration: 2000
+                        toValue: 60,
+                        duration: 1000
                     }
                 ),
                 Animated.timing(
                     this.state.widthAnimation,
                     {
                         toValue: 150,
-                        duration: 2000
+                        duration: 1000
                     }
                 )
-            ]),
-
-            Animated.timing(
-                this.state.widthAnimation,
-                {
-                    toValue: 300,
-                    duration: 800
-                }
-            )
-        ]).start();
-
+            ])
+        ).start();
     }
 
     render() {
@@ -77,11 +70,9 @@ class App extends Component {
                     height: this.state.heightAnimation,
                     backgroundColor: '#4169E1',
                     justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 10,
-                    opacity: this.state.opacidade
+                    borderRadius: 25
                 }}>
-                    <Text style={{ fontSize: 22, color: '#FFF', textAlign: 'center' }}> Carregando... </Text>
+                    <Text style={{ fontSize: 20, color: '#FFF', textAlign: 'center' }}> Carregando... </Text>
                 </Animated.View>
             </View>
         );

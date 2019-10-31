@@ -20,7 +20,11 @@ const { container } = styles;
 class Pagina1 extends Component {
 
     static navigationOptions = {
-        header: null
+        title: 'Pagina 1 ',
+        headerStyle: {
+            backgroundColor: '#2233DD'
+        },
+        headerTintColor: '#FFF'
     };
 
     constructor(props) {
@@ -64,8 +68,6 @@ class Pagina1 extends Component {
                     justifyContent: 'center',
                     backgroundColor: '#4168E1'
                 }}>
-
-                    <Button title="Início" onPress={ this.carregarGrafico } />
 
                     <TouchableOpacity onPress={this.carregarGrafico}>
                         <Text style={{ fontSize: 28, color: '#FFF' }}>Gerar Grafico</Text>
