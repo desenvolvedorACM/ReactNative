@@ -5,7 +5,6 @@ import {
     StyleSheet,
     Animated,
     TouchableOpacity,
-    Button
 } from 'react-native';
 
 
@@ -20,9 +19,9 @@ const { container } = styles;
 class Pagina1 extends Component {
 
     static navigationOptions = {
-        title: 'Pagina 1 ',
+        title: 'Pagina 1 - Estudando animações',
         headerStyle: {
-            backgroundColor: '#2233DD'
+            backgroundColor: '#559000'
         },
         headerTintColor: '#FFF'
     };
@@ -32,7 +31,7 @@ class Pagina1 extends Component {
         this.state = {
             widthAnimation: new Animated.Value(150),
             heightAnimation: new Animated.Value(35),
-            opAnimada: 0
+            opAnimada: new Animated.Value(0),
         };
 
         this.carregarGrafico = this.carregarGrafico.bind(this);
@@ -44,7 +43,7 @@ class Pagina1 extends Component {
             Animated.timing(
                 this.state.opAnimada,
                 {
-                    toValue: 0.5,
+                    toValue: 0.9,
                     duration: 1500
                 }
             ),
@@ -52,7 +51,7 @@ class Pagina1 extends Component {
                 this.state.heightAnimation,
                 {
                     toValue: 300,
-                    duration: 2000
+                    duration: 1000
                 }
             )
         ]).start();

@@ -3,7 +3,9 @@ import {
     View,
     Text,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    NetInfo,
+    Platform
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -61,7 +63,7 @@ class App extends Component {
     static navigationOptions = {
         title: 'Home',
         headerStyle: {
-            backgroundColor: '#2233DD'
+            backgroundColor: '#559000'
         },
         headerTintColor: '#FFF'
     }

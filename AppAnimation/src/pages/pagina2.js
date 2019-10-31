@@ -21,8 +21,13 @@ const { container } = styles;
 class App extends Component {
 
     static navigationOptions = {
-        header: null
+        title: 'Pagina 2',
+        headerStyle: {
+            backgroundColor: '#559000'
+        },
+        headerTintColor: '#FFF'
     };
+
 
     constructor(props) {
         super(props);
@@ -32,6 +37,10 @@ class App extends Component {
             opacidade: new Animated.Value(1)
         };
 
+        this.executaSequencia();
+    }
+
+    executaSequencia = () => {
         Animated.sequence([
             Animated.timing(
                 this.state.opacidade,
@@ -61,12 +70,18 @@ class App extends Component {
             Animated.timing(
                 this.state.widthAnimation,
                 {
-                    toValue: 300,
+                    toValue: 400,
                     duration: 800
                 }
-            )
+            ),
+            Animated.timing(
+                this.state.opacidade,
+                {
+                    toValue: 1,
+                    duration: 1500
+                }
+            ),
         ]).start();
-
     }
 
     render() {

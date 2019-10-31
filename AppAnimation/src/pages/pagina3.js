@@ -23,7 +23,7 @@ class App extends Component {
     static navigationOptions = {
         title: 'Pagina 3',
         headerStyle: {
-            backgroundColor: '#2233DD'
+            backgroundColor: '#559000'
         },
         headerTintColor: '#FFF'
     };
@@ -32,22 +32,20 @@ class App extends Component {
         super(props);
         this.state = {
             widthAnimation: new Animated.Value(150),
-            heightAnimation: new Animated.Value(35),
+            heightAnimation: new Animated.Value(60),
+            opAnima: new Animated.Value(0)
         };
 
+        this.executaAnimacaoLoop();
+    }
+
+    executaAnimacaoLoop = () => {
         Animated.loop(
             Animated.sequence([
                 Animated.timing(
                     this.state.widthAnimation,
                     {
                         toValue: 400,
-                        duration: 1000
-                    }
-                ),
-                Animated.timing(
-                    this.state.heightAnimation,
-                    {
-                        toValue: 60,
                         duration: 1000
                     }
                 ),
