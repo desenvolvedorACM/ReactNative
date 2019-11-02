@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 8
     },
+    botaoAnima4: {
+        backgroundColor: '#115522',
+        width: '100%',
+        height: 50,
+        borderRadius: 15,
+        justifyContent: 'center',
+        margin: 8
+    },
     texto: {
         color: '#FFF',
         fontSize: 20,
@@ -56,7 +64,15 @@ const styles = StyleSheet.create({
     }
 });
 
-const { container, botaoAnima1, botaoAnima2, botaoAnima3, texto, header, containerPrincipal } = styles;
+const {
+    container,
+    botaoAnima1,
+    botaoAnima2,
+    botaoAnima3,
+    botaoAnima4,
+    texto,
+    header,
+    containerPrincipal } = styles;
 
 class App extends Component {
 
@@ -92,6 +108,11 @@ class App extends Component {
                     <TouchableOpacity style={botaoAnima3} onPress={() => this.props.navigation.navigate('Pagina3')}>
                         <Text style={texto}>Animação 3</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity style={botaoAnima4} onPress={() => this.props.navigation.navigate('Pagina4')}>
+                        <Text style={texto}>Animação 4</Text>
+                    </TouchableOpacity>
+
                 </View>
             </View>
         )
