@@ -73,16 +73,21 @@ class App extends Component {
         </View>
 
         <View style={{ flexDirection: 'row' }}>
-          <Button title='São Paulo' onPress={() => { this.moveCidade(-23.5492243 - 465813785) }}></Button>
-          <Button title='Brasília' onPress={() => { this.moveCidade(-15.8080374 - 47.8750231) }}></Button>
-          <Button title='Campo Grande' onPress={() => { this.moveCidade(-20.4695225 - 54.6016767) }}></Button>
+          <Button title='São Paulo' onPress={() => { this.moveCidade(-23.5492243, - 465813785) }}></Button>
+          <Button title='Brasília' onPress={() => { this.moveCidade(-15.8080374, - 47.8750231) }}></Button>
+          <Button title='Campo Grande' onPress={() => { this.moveCidade(-20.4695225, - 54.6016767) }}></Button>
         </View>
 
-        <Text style={{ fontSize: 15, color: '#000' }}>{region.latitude} |{region.longitude}</Text>
+        <Text style={{ fontSize: 15, color: '#000' }}>{region.latitude} | {region.longitude}</Text>
 
         <MapView
           style={mapa}
-          region={this.region} />
+          initialRegion={{
+            latitude: -29.9139526,
+            longitude: -51.2027975,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }} />
 
       </View>
 
