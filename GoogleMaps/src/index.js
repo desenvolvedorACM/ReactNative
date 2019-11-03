@@ -55,7 +55,7 @@ class App extends Component {
       latitude: lat,
       longitude: long,
       latitudeDelta: 0.0922,
-      longitudeDeelta: 0.0421,
+      longitudeDelta: 0.0421,
     }
 
     state.region = regionAlterada;
@@ -69,7 +69,7 @@ class App extends Component {
 
       <View style={container}>
         <View style={header}>
-          <Text style={{ fontSize: 20, color: '#000' }}>Projeto mapas</Text>
+          <Text style={{ fontSize: 25, color: '#000' }}>Projeto mapas</Text>
         </View>
 
         <View style={{ flexDirection: 'row' }}>
@@ -82,9 +82,9 @@ class App extends Component {
 
         <MapView
           style={mapa}
-          initialRegion={{
-            latitude: -29.9139526,
-            longitude: -51.2027975,
+          region={{
+            latitude: region.latitude,
+            longitude: region.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }} />
