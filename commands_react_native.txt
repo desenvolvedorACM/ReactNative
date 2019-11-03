@@ -19,7 +19,7 @@ react-native link react-native-gesture-handler
 npm install --save react-redux@5.1.1
 npm install --save redux
 
-yarn add react-native-maps@0.23.0 ou npm install react-native-maps@0.23.0 --save
+yarn add react-native-maps@0.25.0 ou npm install react-native-maps@0.25.0 --save
 
 npm uninstall -g react-native-cli
 =============================================
