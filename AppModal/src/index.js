@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {
     Modal,
     View,
-    Button,
-    StyleSheet
+    TouchableOpacity,
+    StyleSheet,
+    Text,
 } from 'react-native';
 import ModalEntrar from './components/modal';
 
@@ -13,34 +14,47 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#DDD'
+        backgroundColor: '#DDD',
+        padding: 12
     },
-    modal: {
-        backgroundColor: '#DDDD55',
+    botao: {
+        backgroundColor: '#000055',
         width: '100%',
-        height: 400
+        height: 50,
+        borderRadius: 15,
+        justifyContent: 'center'
     },
-    modalTexto: {
-        fontSize: 25,
-        color: '#000'
+    textoBotao: {
+        color: '#FFF',
+        fontSize: 18,
+        textAlign: 'center'
     },
-    modalContainer: {
-        margin: 15,
+    modalcontainer: {
         flex: 1,
-        padding: 10,
+        alignItems: 'center',
         justifyContent: 'center',
-        alignItems: 'center'
+        margin: 10
     }
 });
 
-const { container } = styles;
+const { container, modalcontainer, botao, textoBotao } = styles;
 
 export default class App extends Component {
-    state = {
-        modalVisible: false,
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = { modalVisible: false };
+    }
 
     setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
+
+    entrar = () => {
+        this.setModalVisible(true);
+    }
+
+    sair = (visible) => {
         this.setState({ modalVisible: visible });
     }
 
@@ -48,17 +62,18 @@ export default class App extends Component {
         return (
             <View style={container}>
 
-                <Button title='Abrir Modal' onPress={() => { this.setModalVisible(true) }} />
+                <TouchableOpacity style={botao}
+                    onPress={this.entrar}>
+                    <Text style={textoBotao}>Abrir Modal</Text>
+                </TouchableOpacity>
 
                 <Modal
                     animationType="slide"
                     transparent={true}
                     visible={this.state.modalVisible}>
 
-                    <View style={Modalcontainer}>
-                        <ModalEntrar fechar={() => {
-                            this.setModalVisible(!this.state.modalVisible);
-                        }} />
+                    <View style={modalcontainer}>
+                        <ModalEntrar fechar={() => { this.sair(false); }} />
                     </View>
                 </Modal>
 
