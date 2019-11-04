@@ -25,19 +25,15 @@ const styles = StyleSheet.create({
 
 const { containerModal, modalTexto } = styles;
 
-class ModalEntrar extends Component {
-    render() {
-        return (
-            <View style={containerModal}>
-                <Text style={modalTexto}>Seja bem-vindo modal!</Text>
+const ModalEntrar = ({ fechar }) => (
+    <View style={containerModal}>
+        <Text style={modalTexto}>Seja bem-vindo modal!</Text>
 
-                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-                    <Button title='Sair' onPress={this.props.fechar} />
-                </View>
-            </View>
-        )
-    }
-}
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+            <Button title='Sair' onPress={ fechar } />
+        </View>
+    </View>
+)
 
 
 export default ModalEntrar;
