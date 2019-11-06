@@ -4,20 +4,42 @@ import {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center'
+        flex: 1
     },
-    mapa: {
+    Botao1: {
         width: '100%',
-        height: 550
-    },
-    header: {
         height: 60,
-        width: '100%',
-        backgroundColor: '#8877EE',
+        borderRadius: 10,
+        backgroundColor: '#889966',
         justifyContent: 'center',
+        marginBottom: 10
+    },
+    Botao2: {
+        width: '100%',
+        height: 60,
+        borderRadius: 10,
+        backgroundColor: '#886699',
+        justifyContent: 'center',
+        marginBottom: 10
+    },
+    Botao3: {
+        width: '100%',
+        height: 60,
+        borderRadius: 10,
+        backgroundColor: '#444499',
+        justifyContent: 'center',
+        marginBottom: 10
+    },
+    containerPrincipal: {
+        flex: 1,
         alignItems: 'center',
-        marginBottom: 15
+        justifyContent: 'center',
+        padding: 12
+    },
+    texto: {
+        fontSize: 20,
+        color: '#FFF',
+        textAlign: 'center'
     }
 });
 
