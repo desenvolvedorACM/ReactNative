@@ -6,9 +6,9 @@ import {
   Text
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import MapViewDirections from 'react-native-maps-directions';
 import styles from './styles';
 import { getPixel } from '../../config/utils';
+import MapViewDirections from 'react-native-maps-directions';
 
 const { container, mapa, localView, localButton, localText, box } = styles;
 const apikey = 'AIzaSyDJCb_MWqmlaeY0O6IPfqeQ9E7zNnelTS8';
