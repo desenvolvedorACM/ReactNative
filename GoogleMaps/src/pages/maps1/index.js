@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text
 } from 'react-native';
 import MapView, { Marker, Circle } from 'react-native-maps';
 import styles from './styles';
@@ -13,11 +12,7 @@ const { container, mapa } = styles;
 class Maps1 extends Component {
 
   static navigationOptions = {
-    title: 'Personalização de markers',
-    headerStyle: {
-      backgroundColor: '#8877EE'
-    },
-    headerTintColor: '#FFF',
+    title: 'Personalização de markers'
   }
 
   constructor(props) {

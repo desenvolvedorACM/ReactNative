@@ -9,12 +9,18 @@ import Maps3 from './pages/maps3';
 
 export default createAppContainer(
     createStackNavigator({
-        Main: { screen: Main },
+        Main,
         Maps1,
         Maps2,
         Maps3
     },
         {
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: '#8877EE'
+                },
+                headerTintColor: '#FFF',
+            },
             mode: 'modal'
         })
 )
