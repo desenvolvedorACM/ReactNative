@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import styles from './styles';
-import Geolocation from '@react-native-community/geolocation';
+//import Geolocation from '@react-native-community/geolocation';
 
 
 const { container, mapa, botaoLocation } = styles;
@@ -51,11 +51,11 @@ class Maps4 extends Component {
   }
 
   getLocation = async () => {
-    await Geolocation.getCurrentPosition(async ({ coords: { latitude, longitude } }) => {
+    /*await Geolocation.getCurrentPosition(async ({ coords: { latitude, longitude } }) => {
        alert(latitude);
     },
       error => Alert.alert('Erro GPs',error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });*/
   }
 
   render() {

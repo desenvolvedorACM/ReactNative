@@ -3,6 +3,7 @@ choco install nodejs.install python2 jdk8
 npm install -g react-native-cli
 ==============================================
 1 - npm install -g react-native-cli
+npm uninstall -g react-native-cli
 2 - react-native -v
 3 - react-native init --version="0.56.0" MyNewApp
 4 - react-native run-android
@@ -16,12 +17,12 @@ npm install --save react-navigation-stack
 npm install --save react-native-gesture-handler
 react-native link react-native-gesture-handler
 
+yarn add react-native-maps@0.25.0 ou npm install react-native-maps@0.25.0 --save
+yarn add react-native-maps-directions ou npm install --save react-native-maps-directions
+
 npm install --save react-redux@5.1.1
 npm install --save redux
 
-yarn add react-native-maps@0.25.0 ou npm install react-native-maps@0.25.0 --save
-
-npm uninstall -g react-native-cli
 =============================================
 npm i --save firebase@5.0.3
 npm i --save react-native-router-flux

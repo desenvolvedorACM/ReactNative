@@ -38,6 +38,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 10
     },
+    Botao5: {
+        width: '100%',
+        height: 60,
+        borderRadius: 10,
+        backgroundColor: '#EE1155',
+        justifyContent: 'center',
+        marginBottom: 10
+    },
     containerPrincipal: {
         flex: 1,
         alignItems: 'center',
