@@ -70,7 +70,15 @@ class Maps2 extends Component {
             longitude: -51.1786755
           }
         }
-      ]
+      ],
+      markerMoveCidade: {
+        key: 0,
+        pinColor: '#FF8800',
+        coords: {
+          latitude: '',
+          longitude: ''
+        }
+      }
     };
 
     this.moveCidade = this.moveCidade.bind(this);
@@ -100,7 +108,7 @@ class Maps2 extends Component {
     this.setState(state);
   }
 
-  moveCidade = (lat, long) => {
+  moveCidade = (lat, long, key) => {
 
     let state = this.state;
     let regionAlterada = {
@@ -111,12 +119,18 @@ class Maps2 extends Component {
     }
 
     state.region = regionAlterada;
+    state.markerMoveCidade = {
+      key: key,
+      pinColor: '#FF8800',
+      coords: {
+        latitude: lat,
+        longitude: long
+      }
+    }
+
     this.setState(state);
   }
 
-  posicaoAtual = () => {
-
-  }
 
   getInitialState() {
     return {
@@ -145,62 +159,74 @@ class Maps2 extends Component {
     this.setState(state);
   }
 
+
   render() {
-    const { region, regionText, markers } = this.state;
+    const { region, markers, markerMoveCidade } = this.state;
     let localizacaoAtual = `Minha localização atual: ${region.latitude} | ${region.longitude}`;
 
-    return (
+    if (markerMoveCidade.key != 0) {
+      return (
+        <View style={container}>
 
-      <View style={container}>
-        <View style={header}>
-          <Text style={{ fontSize: 25, color: '#000' }}>Projeto mapas</Text>
+          <MapView
+            style={mapa}
+            loadingEnabled={true}
+            zoomEnabled={true}
+            region={this.state.region}>
+
+            <Marker key={markerMoveCidade.key}
+              pinColor={markerMoveCidade.pinColor}
+              coordinate={markerMoveCidade.coords} />
+
+            <Circle
+              fillColor='rgba(255,0,0, 0.3)'
+              center={ markerMoveCidade.coords }
+              radius={3500} />
+          </MapView>
+
         </View>
+      );
+    } else {
+      return (
+        <View style={container}>
 
-        <View style={{ flexDirection: 'row' }}>
-          <Button title='São Paulo' onPress={() => { this.moveCidade(-23.5492243, - 465813785) }}></Button>
-          <Button title='Brasília' onPress={() => { this.moveCidade(-15.8080374, - 47.8750231) }}></Button>
-          <Button title='Campo Grande' onPress={() => { this.moveCidade(-20.4695225, - 54.6016767) }}></Button>
-          <Button title='Posição atual' onPress={this.posicaoAtual}></Button>
-        </View>
+          <View style={{ flexDirection: 'row' }}>
+            <Button title='São Paulo' onPress={() => { this.moveCidade(-23.5492243, - 465813785, 1) }}></Button>
+            <Button title='Brasília' onPress={() => { this.moveCidade(-15.8080374, - 47.8750231, 2) }}></Button>
+            <Button title='Campo Grande' onPress={() => { this.moveCidade(-20.4695225, - 54.6016767, 3) }}></Button>
+          </View>
 
-
-        <View style={{ borderRadius: 15, backgroundColor: '#000', padding: 12, borderColor: '#000', borderWidth: 1 }}>
-          <Text style={{ fontSize: 15, color: '#FFF' }}>Posição Atual: {regionText}</Text>
-        </View>
-
-        <MapView
-          style={mapa}
-          mapType="standard"
-          showsUserLocation={true}
-          loadingEnabled={true}
-          zoomEnabled={true}
-          showsTraffic={true}
-          onPress={this.adicionaMarcador}
-          /*onMapReady={()=> { }}*/
-          /*onRegionChangeComplete={this.mudouMapa}
-          onRegionChange={this.onRegionChange} */
-          region={this.state.region}>
-          {
-            markers.map((marker) => {
-              return (
+          <MapView
+            style={mapa}
+            mapType="standard"
+            showsUserLocation={true}
+            loadingEnabled={true}
+            zoomEnabled={true}
+            showsTraffic={true}
+            onPress={this.adicionaMarcador}
+            /*onMapReady={()=> { }}*/
+            /*onRegionChangeComplete={this.mudouMapa}
+            onRegionChange={this.onRegionChange} */
+            region={this.state.region}>
+            {
+              markers.map((marker) =>
                 <Marker key={marker.key} title='Titulo: ' description={localizacaoAtual} pinColor={marker.pinColor}
                   coordinate={marker.coords} />
               )
-            })
-          }
+            }
 
-          <Circle
-            fillColor='rgba(255,0,0, 0.3)'
-            center={{
-              latitude: -29.9152058,
-              longitude: -51.1953909
-            }}
-            radius={3500} />
-        </MapView>
+            <Circle
+              fillColor='rgba(255,0,0, 0.3)'
+              center={{
+                latitude: -29.9152058,
+                longitude: -51.1953909
+              }}
+              radius={3500} />
+          </MapView>
 
-      </View>
-
-    );
+        </View>
+      )
+    }
   }
 }
 

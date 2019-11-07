@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 
-const { container, Botao1, Botao2,Botao3, containerPrincipal, texto } = styles;
+const { container, Botao1, Botao2, Botao3, Botao4, containerPrincipal, texto } = styles;
 
 const Main = ({ navigation }) =>
   (
@@ -22,6 +22,10 @@ const Main = ({ navigation }) =>
         <TouchableOpacity style={Botao3} onPress={() => { navigation.navigate('Maps3') }}>
           <Text style={texto}>Mapas3</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={Botao4} onPress={() => { navigation.navigate('Maps4') }}>
+          <Text style={texto}>Mapas4</Text>
+        </TouchableOpacity>
+
       </View>
 
     </View>

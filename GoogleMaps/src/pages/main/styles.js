@@ -30,6 +30,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 10
     },
+    Botao4: {
+        width: '100%',
+        height: 60,
+        borderRadius: 10,
+        backgroundColor: '#123455',
+        justifyContent: 'center',
+        marginBottom: 10
+    },
     containerPrincipal: {
         flex: 1,
         alignItems: 'center',
