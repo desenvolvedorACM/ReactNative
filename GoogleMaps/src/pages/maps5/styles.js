@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     mapa: {
-      width: '100%',
-      height: '100%'
+        width: '100%',
+        height: '100%'
     },
     box: {
         position: 'absolute',
@@ -32,8 +32,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF8800'
     },
     localText: {
-     fontSize: 15,
-     color: '#FFF'
+        fontSize: 15,
+        color: '#FFF'
+    },
+    modalcontainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10
     }
 });
 

@@ -45,7 +45,12 @@ class Maps4 extends Component {
   }
 
   async componentDidMount() {
+     await getLocation();
+  }
+
+  getLocation = async () => {
     await Geolocation.getCurrentPosition(async ({ coords: { latitude, longitude } }) => {
+
       this.setState({
         region: {
           latitude: latitude,
@@ -61,22 +66,7 @@ class Maps4 extends Component {
           longitude: -51.1823962
         }
       });
-      
-    },
-      error => Alert.alert('Erro GPs', error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
-  }
 
-  getLocation = async () => {
-    await Geolocation.getCurrentPosition(async ({ coords: { latitude, longitude } }) => {
-      this.setState({
-        region: {
-          latitude: latitude,
-          longitude: longitude,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421
-        }
-      })
     },
       error => Alert.alert('Erro GPs', error.message),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
@@ -104,29 +94,28 @@ class Maps4 extends Component {
             style={mapa}
             region={region} >
 
-              
-          {this.state.destLocation &&
-            <MapViewDirections
-              origin={this.state.region}
-              destination={this.state.destLocation}
-              apikey="AIzaSyDJCb_MWqmlaeY0O6IPfqeQ9E7zNnelTS"
-              strokeWidth={5}
-              strokeColor="#000"
-              onReady={result => {
-                this.map.fitToCoordinates(result.coordinates, {
-                  edgePadding: {
-                    right: getPixel(50),
-                    left: getPixel(50),
-                    top: getPixel(50),
-                    bottom: getPixel(50)
-                  }
-                })
-              }}
-            />
-            //latitude:-20.4634685,longitude:-54.6108303
-            //latitude:-20.4615409,longitude:-54.5919008
-          }
-            </MapView>
+
+            {this.state.destLocation &&
+              <MapViewDirections
+                origin={this.state.region}
+                destination={this.state.destLocation}
+                apikey="AIzaSyDJCb_MWqmlaeY0O6IPfqeQ9E7zNnelTS"
+                strokeWidth={5}
+                strokeColor="#000"
+                onReady={result => {
+                  this.map.fitToCoordinates(result.coordinates, {
+                    edgePadding: {
+                      right: getPixel(50),
+                      left: getPixel(50),
+                      top: getPixel(50),
+                      bottom: getPixel(50)
+                    }
+                  })
+                }}
+              />
+
+            }
+          </MapView>
         </View>
 
       </View>
