@@ -1,36 +1,14 @@
 import React, { Component } from 'react';
 import {
-    Platform,
-    StyleSheet,
     Text,
     View,
     TextInput,
     Button
 } from 'react-native';
 
-
 import { connect } from 'react-redux';
-import { editEmail, editSenha } from '../actions/AuthAction';
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center'
-    },
-    nomeInput: {
-        color: '#000000',
-        fontSize: 24,
-        marginBottom: 5
-    },
-    input: {
-        height: 50,
-        backgroundColor: '#CCCCCC',
-        padding: 5,
-        marginBottom: 10,
-        borderRadius: 10
-    }
-});
+import { editEmail, editSenha } from '../../actions/AuthAction';
+import styles from './styles';
 
 
 export class Cadastro extends Component {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {
-    Platform,
-    StyleSheet,
     Text,
     View,
     TextInput,
@@ -9,27 +7,8 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { editEmail, editSenha } from '../actions/AuthAction';
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center'
-    },
-    nomeInput: {
-        color: '#000000',
-        fontSize: 24,
-        marginBottom: 5
-    },
-    input: {
-        color: '#000000',
-        height: 50,
-        backgroundColor: '#CCCCCC',
-        padding: 5,
-        marginBottom: 10,
-        borderRadius: 10
-    }
-});
+import { editEmail, editSenha } from '../../actions/AuthAction';
+import styles from './styles';
 
 
 export class Login extends Component {
@@ -49,12 +28,9 @@ export class Login extends Component {
         this.state = {}
 
         this.entrar = this.entrar.bind(this);
-
     }
 
-    entrar() {
-
-    }
+    entrar = () => { }
 
 
     render() {
