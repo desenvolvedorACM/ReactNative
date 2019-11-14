@@ -1,0 +1,3 @@
+choco install nodejs.install python2 jdk8
+npm install -g react-native-cli ou yard add react-native-cli
+npm uninstall -g react-native-cli

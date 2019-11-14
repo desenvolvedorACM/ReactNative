@@ -1,0 +1,7 @@
+
+adb disconnect
+adb devices
+adb -e install myApp.apk
+adb disconnect 192.168.56.102:5555
+adb connect 192.168.56.102:5555
+

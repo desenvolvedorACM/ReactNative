@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     View,
     Text,
@@ -6,34 +6,30 @@ import {
     ScrollView,
     TouchableOpacity
 } from 'react-native';
-import { DrawerItems } from 'react-navigation-drawer';
+import { DrawerItems } from 'react-navigation';
 
 
-export default class CustomDrawer extends Component {
+const CustomDrawer = props => (
+    <View style={{ flex: 1 }}>
+        <View style={{ width: '100%', height: 75, marginTop: 25, justifyContent: 'center', alignItems: 'center' }}>
+            <Image source={require('../img/perfil.png')} style={{ width: 65, height: 65 }} />
+            <Text style={{ fontSize: 18, marginTop: 6, color: '#FFF' }}> Bem vindo alexandre</Text>
+        </View>
 
-    render() {
-        return (
-            <View style={{ flex: 1 }}>
-                <View style={{ width: '100%', height: 75, marginTop: 25, justifyContent: 'center', alignItems: 'center' }}>
-                    <Image source={require('../img/perfil.png')} style={{ width: 65, height: 65 }} />
-                    <Text style={{ fontSize: 18, marginTop: 6, color: '#FFF' }}> Bem vindo alexandre</Text>
-                </View>
+        <ScrollView style={{ marginTop: 15 }}>
+            <DrawerItems {...props} />
+        </ScrollView>
 
-                <ScrollView>
-                    <Text>Item1</Text>
-                    <Text>Item1</Text>
-                    <Text>Item1</Text>
-                </ScrollView>
+        <View style={{ marginTop: 20, width: '100%' }}>
+            <TouchableOpacity
+                style={{ backgroundColor: '#666555' }}
+                underlineColor="transparent"
+                onPress={() => { this.props.navigation.navigate('Contato'); }}>
+                <Text style={{ margin: 10, color: '#FFF', textAlign: 'center' }}>Contato</Text>
+            </TouchableOpacity>
+        </View>
+    </View>
+);
 
-                <View style={{ marginTop: 20, width: '100%' }}>
-                    <TouchableOpacity
-                        style={{ backgroundColor: '#666555' }}
-                        underlineColor="transparent"
-                        onPress={() => { }}>
-                        <Text style={{ margin: 10, color: '#FFF', textAlign: 'center' }}>Contato</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        )
-    }
-}
+export default CustomDrawer;
+

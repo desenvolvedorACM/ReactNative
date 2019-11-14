@@ -1,13 +1,12 @@
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
+import Home from './pages/home';
+import Contato from './pages/contato';
+import CustomDrawer from './components/CustomDrawer';
 
-import Home from './src/pages/home';
-import Contato from './src/pages/contato';
-import CustomDrawer from './src/components/CustomDrawer';
 
-
-const Routes = createAppContainer(
+const drawerNavigator = createAppContainer(
   createDrawerNavigator({
     Home: { screen: Home },
     Contato: { screen: Contato },
@@ -18,4 +17,4 @@ const Routes = createAppContainer(
   })
 );
 
-export default Routes;
+export default drawerNavigator;
