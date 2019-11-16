@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const Api = axios.create({
-    baseURL: 'https://www.alphavantage.co/query?function='
+export default Api = axios.create({
+    baseURL: 'http://curso-udemy-react-native.herokuapp.com'
 });
-
-export default Api;

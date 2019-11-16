@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Text } from 'react-native';
-import Api from '../../services/api';
-import { Container} from './styles';
+import { FlatList, Text, View } from 'react-native';
 
 
 class Main extends Component {
@@ -13,9 +11,9 @@ class Main extends Component {
 
     render() {
         return (
-            <Container>
+            <View>
                 <Text>TESTE</Text>
-            </Container>
+            </View>
         );
     }
 }
