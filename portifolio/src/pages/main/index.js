@@ -3,7 +3,8 @@ import {
     View,
     Text,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 import Api from '../../services/api';
 import styles from './styles';
@@ -15,7 +16,15 @@ const {
     projecButton,
     projectText,
     projectDescription,
-    container } = styles;
+    container,
+    image,
+    cardProfile,
+    cardInfo,
+    userInfo,
+    name } = styles;
+import SocialHeader from '../../components/socialHeader';
+import Loading from '../../components/loading';
+
 
 class Main extends Component {
 
@@ -27,7 +36,8 @@ class Main extends Component {
         super(props);
         this.state = {
             error: '',
-            projects: []
+            projects: [],
+            loading: false
         };
     }
 
@@ -36,12 +46,16 @@ class Main extends Component {
     }
 
     loadProjects = async () => {
+        this.setState({ loading: true });
         try {
             const response = await Api.get('/projects');
             console.log(response);
 
             this.setState({ projects: [...response.data] });
+
+            this.setState({ loading: false });
         } catch (error) {
+            this.setState({ loading: false });
             this.setState({ error: error });
         }
     }
@@ -57,17 +71,41 @@ class Main extends Component {
     )
 
     render() {
-        return (
-            <View style={container}>
-                <FlatList
-                    data={this.state.projects}
-                    keyExtractor={item => `${item.id}`}
-                    renderItem={this.renderItem}
-                    contentContainerStyle={list}
-                    showsVerticalScrollIndicator={false}
-                />
-            </View>
-        );
+        if (this.state.loading) {
+            return (
+                <Loading />
+            )
+        } else {
+            return (
+                <View style={container}>
+
+                    <View style={cardProfile}>
+                        <Image style={image}
+                            source={require('../../assets/user.png')} />
+
+                        <SocialHeader navigation={ this.props.navigation } />
+
+                        <View>
+                            <Text style={name}>Alexandre Marques</Text>
+                            <View style={cardInfo}>
+                                <Text style={userInfo}>Desenvolvedor mobile</Text>
+                                <Text style={userInfo}>Idade: 38 anos</Text>
+                            </View>
+                        </View>
+                    </View>
+
+
+                    <FlatList
+                        data={this.state.projects}
+                        keyExtractor={item => `${item.id}`}
+                        renderItem={this.renderItem}
+                        contentContainerStyle={list}
+                        showsVerticalScrollIndicator={false}
+                    />
+                </View>
+            );
+        }
+
     }
 }
 
