@@ -1,26 +1,7 @@
-import React, { Component } from 'react';
-import {
-    SafeAreaView,
-    View,
-    Text
-} from 'react-native';
+import React from 'react';
+import Routes from './routes';
 import './config/StatusBarConfig';
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+export default App = () => <Routes />
 
-    render() {
-        return (
-            <SafeAreaView>
-                <View>
-                    <Text> idex </Text>
-                </View>
-            </SafeAreaView>
-        );
-    }
-}
 
