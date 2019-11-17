@@ -122,8 +122,6 @@ class Main extends Component {
         const high = parseInt(item['2. high']).toFixed(2);
         const low = parseInt(item['3. low']).toFixed(2);
 
-        console.log(high);
-
         return (
             <ContainerItemFlatList>
 
@@ -133,7 +131,7 @@ class Main extends Component {
                     <TextVolume>VOLUME: {item['5. volume']}</TextVolume>
                 </ContainerVolume>
 
-                <ButtonViewGraphic>
+                <ButtonViewGraphic onPress={() => { this.props.navigation.navigate('Grafic', { grafic: item }) }}>
                     <TextViewGraphic>Gerar grafico</TextViewGraphic>
                 </ButtonViewGraphic>
 

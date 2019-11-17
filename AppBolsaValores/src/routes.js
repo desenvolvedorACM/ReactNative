@@ -1,9 +1,11 @@
 import { createStackNavigator } from 'react-navigation';
 
 import Main from './pages/main';
+import Grafic from './pages/graphic';
 
 export default createStackNavigator({
-    Main
+    Main,
+    Grafic
 },
     {
         navigationOptions: {
@@ -15,7 +17,7 @@ export default createStackNavigator({
                 textAlign: "center",
                 flex: 1
             },
-            headerTitle: "Consultar indice na bolsa"
+            headerTitle: "Consultar dados na bolsa"
         },
         mode: 'card'
     });
