@@ -3,8 +3,7 @@ import {
     FlatList,
     Picker,
     Text,
-    Animated,
-    View
+    Animated
 } from 'react-native';
 import {
     Container,
@@ -32,11 +31,12 @@ class Main extends Component {
         super(props);
         this.state = {
             selectSymbol: '',
-            searchFilter: 'MSFT',
+            searchFilter: 'AIR',
             companies: [],
             error: '',
             loading: false,
             timesSeries: [],
+            metaData: null,
             widthAnimation: new Animated.Value(80),
             heightAnimation: new Animated.Value(10),
             opAnimada: new Animated.Value(0),
@@ -99,7 +99,8 @@ class Main extends Component {
             const keys = Object.keys(timesDaily);
 
             this.setState({
-                timesSeries: [...dataArray]
+                timesSeries: [...dataArray],
+                metaData: MetaData
             });
 
             console.log(this.state.timesSeries);
@@ -131,7 +132,7 @@ class Main extends Component {
                     <TextVolume>VOLUME: {item['5. volume']}</TextVolume>
                 </ContainerVolume>
 
-                <ButtonViewGraphic onPress={() => { this.props.navigation.navigate('Grafic', { grafic: item }) }}>
+                <ButtonViewGraphic onPress={() => { this.props.navigation.navigate('Grafic', { metaData: this.state.metaData  }) }}>
                     <TextViewGraphic>Gerar grafico</TextViewGraphic>
                 </ButtonViewGraphic>
 
