@@ -5,9 +5,12 @@ import {
 } from 'react-native';
 import {
     Container,
+    TextLow,
+    TextHigh
 } from './styles';
 import Api from '../../services/api';
-import Loader from '../../components/loading';
+import { AreaChart, StackedBarChart, StackedAreaChart, Grid } from 'react-native-svg-charts';
+import * as shape from 'd3-shape'
 
 
 class Grafic extends Component {
@@ -17,7 +20,8 @@ class Grafic extends Component {
 
         this.state = {
             symbol: '',
-            errorMessage: ''
+            errorMessage: '',
+            timeSeries: []
         };
     }
 
@@ -29,14 +33,23 @@ class Grafic extends Component {
         try {
 
             const symbol = this.props.navigation.state.params.metaData['2. Symbol'];
+            const listItems = [];
 
             if (symbol != '') {
                 const response = await Api.get(`query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=OQ7UMDJVYN6QE14Q`);
                 const { ...MetaData } = response.data["Meta Data"];
                 const { ...timeSeries } = response.data["Time Series (5min)"];
 
-                const timeSeriesArray = Object.values(timeSeries);
-                console.log(timeSeries);
+                Object.values(timeSeries).map(item => {
+                    listItems.push({
+                        high: item['2. high'],
+                        low: item['3. low'],
+                    });
+
+                });
+
+                this.setState({timeSeries: [...listItems] });
+                console.log(this.state.timeSeries);
             }
 
         } catch (error) {
@@ -46,9 +59,24 @@ class Grafic extends Component {
     }
 
     render() {
+
+        const colors = ['#7b4173', '#de9ed6']
+        const keys = ['high', 'low']
+
         return (
             <Container>
-                <Text>Grafic</Text>
+                <TextLow>LOW</TextLow>
+                <TextHigh>HIGH</TextHigh>
+
+                <StackedAreaChart
+                    style={{ height: 250, paddingVertical: 10 }}
+                    data={ this.state.timeSeries }
+                    keys={keys}
+                    colors={colors}
+                    showGrid={true}
+                />
+
+                <Grid />
             </Container>
         );
     }

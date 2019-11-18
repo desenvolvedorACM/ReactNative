@@ -95,9 +95,10 @@ width: 100%;
 
 export const TextVolume = styled.Text`
   color: #000;
-  font-size: 18px;
+  font-size: 17px;
   text-align: left;
   font-weight: bold;
+  text-transform: uppercase;
 `;
 
 export const ContainerVolume = styled.View`
@@ -120,4 +121,22 @@ export const ButtonViewGraphic = styled.TouchableOpacity`
   margin-top: 12px;
   padding: 9px;
   align-items: center;
+`;
+
+export const TextHigh = styled.Text`
+  color: #7b4173;
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+export const TextLow = styled.Text`
+  color: #de9ed6;
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+export const TextDateNow = styled.Text`
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
 `;

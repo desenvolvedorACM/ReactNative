@@ -19,7 +19,10 @@ import {
     TextVolume,
     ContainerVolume,
     ButtonViewGraphic,
-    TextViewGraphic
+    TextViewGraphic,
+    TextHigh,
+    TextLow,
+    TextDateNow
 } from './styles';
 import Api from '../../services/api';
 import Loader from '../../components/loading';
@@ -29,9 +32,10 @@ class Main extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             selectSymbol: '',
-            searchFilter: 'AIR',
+            searchFilter: 'MSFT',
             companies: [],
             error: '',
             loading: false,
@@ -42,11 +46,11 @@ class Main extends Component {
             opAnimada: new Animated.Value(0),
         };
 
-        this.listCompanies = this.listCompanies.bind(this);
-        this.SearchTimeSeriesDaily = this.SearchTimeSeriesDaily.bind(this);
-        this.pickerValueSelected = this.pickerValueSelected.bind(this);
-        this.LoadAnimation = this.LoadAnimation.bind(this);
+
+        this.bindMethods();
     }
+
+
 
     componentDidMount() {
         this.listCompanies();
@@ -91,48 +95,64 @@ class Main extends Component {
     SearchTimeSeriesDaily = async () => {
         try {
 
-            const response = await Api.get(`/query?function=TIME_SERIES_DAILY&symbol=${this.state.selectSymbol}&apikey=OQ7UMDJVYN6QE14Q`);
-            const { ...MetaData } = response.data["Meta Data"];
-            const { ...timesDaily } = response.data["Time Series (Daily)"];
+            const dailyNewArray = [];
 
-            const dataArray = Object.values(timesDaily);
-            const keys = Object.keys(timesDaily);
+            if (this.state.selectSymbol != '') {
 
-            this.setState({
-                timesSeries: [...dataArray],
-                metaData: MetaData
-            });
+                console.log(`/query?function=TIME_SERIES_DAILY&symbol=${this.state.selectSymbol}&apikey=OQ7UMDJVYN6QE14Q`);
 
-            console.log(this.state.timesSeries);
+                const response = await Api.get(`/query?function=TIME_SERIES_DAILY&symbol=${this.state.selectSymbol}&apikey=OQ7UMDJVYN6QE14Q`);
 
+                const { ...MetaData } = response.data["Meta Data"];
+                const { ...timesDaily } = response.data["Time Series (Daily)"];
+
+                const timesDailyArray = Object.values(timesDaily);
+                const timesDailyKeys = Object.keys(timesDaily);
+
+
+                for (let i = 0; i < timesDailyKeys.length; i++) {
+
+                    dailyNewArray.push({
+                        key: i,
+                        dateNow: timesDailyKeys[i],
+                        high: timesDailyArray[i]['2. high'],
+                        low: timesDailyArray[i]['3. low'],
+                        volume: timesDailyArray[i]['5. volume']
+                    });
+
+                }
+
+                this.setState({ timesSeries: [...dailyNewArray] });
+                //console.log(this.state.timesSeries);
+
+            }
         } catch (error) {
             this.setState({ error });
             console.log(error);
         }
     }
 
-    pickerValueSelected = async (itemValue) => {
-        console.log(itemValue);
+    pickerValueSelected = async (itemValue, itemIndex) => {
+        console.log(itemValue, itemIndex);
+
         this.setState({ selectSymbol: itemValue });
 
         await this.SearchTimeSeriesDaily();
     }
 
     renderItem = ({ item }) => {
-        console.log(item);
-        const high = parseInt(item['2. high']).toFixed(2);
-        const low = parseInt(item['3. low']).toFixed(2);
-
         return (
             <ContainerItemFlatList>
 
-                <Text>HIGH: {high}</Text>
-                <Text>LOW: {low}</Text>
+                <TextDateNow>DATA: {item.dateNow}</TextDateNow>
+                <TextHigh>HIGH: {item.high} </TextHigh>
+                <TextLow>LOW: {item.low}</TextLow>
+
                 <ContainerVolume>
-                    <TextVolume>VOLUME: {item['5. volume']}</TextVolume>
+                    <TextVolume>Volume: {item.volume} </TextVolume>
                 </ContainerVolume>
 
-                <ButtonViewGraphic onPress={() => { this.props.navigation.navigate('Grafic', { metaData: this.state.metaData  }) }}>
+                <ButtonViewGraphic onPress={() => { this.props.navigation.navigate('Grafic', { metaData: this.state.metaData }) }}>
                     <TextViewGraphic>Gerar grafico</TextViewGraphic>
                 </ButtonViewGraphic>
 
@@ -140,13 +160,19 @@ class Main extends Component {
         )
     }
 
+    bindMethods = () => {
+        this.listCompanies = this.listCompanies.bind(this);
+        this.SearchTimeSeriesDaily = this.SearchTimeSeriesDaily.bind(this);
+        this.pickerValueSelected = this.pickerValueSelected.bind(this);
+        this.LoadAnimation = this.LoadAnimation.bind(this);
+    }
 
     render() {
 
         let companiesPicker = this.state.companies.map((itemValue, itemKey) => (
             <Picker.Item key={itemKey}
                 value={itemValue['1. symbol']}
-                label={itemValue['2. name']}>{itemValue['2. name']}</Picker.Item>
+                label={itemValue['2. name']} />
         ))
 
         return (
@@ -155,8 +181,7 @@ class Main extends Component {
                 <ContainerPicker>
                     <PickerEmpresa
                         selectedValue={this.state.selectSymbol}
-                        onValueChange={(itemValue, itemIndex) =>
-                            this.pickerValueSelected(itemValue)}>
+                        onValueChange={(itemValue, itemIndex) => { this.pickerValueSelected(itemValue, itemIndex) }}>
 
                         {
                             companiesPicker
@@ -182,7 +207,7 @@ class Main extends Component {
                         data={this.state.timesSeries}
                         renderItem={this.renderItem}
                         showsVerticalScrollIndicator={false}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => `${item.dateNow}`}
                     />
                 </ContainerList>
 
