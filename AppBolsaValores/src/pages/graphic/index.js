@@ -11,6 +11,7 @@ import {
 import Api from '../../services/api';
 import { AreaChart, StackedBarChart, StackedAreaChart, Grid } from 'react-native-svg-charts';
 import * as shape from 'd3-shape'
+import Loading from '../../components/loading';
 
 
 class Grafic extends Component {
@@ -21,7 +22,8 @@ class Grafic extends Component {
         this.state = {
             symbol: '',
             errorMessage: '',
-            timeSeries: []
+            timeSeries: [],
+            loading: false
         };
     }
 
@@ -34,6 +36,8 @@ class Grafic extends Component {
 
             const symbol = this.props.navigation.state.params.metaData['2. Symbol'];
             const listItems = [];
+
+            this.setState({ loading: true });
 
             if (symbol != '') {
                 const response = await Api.get(`query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=OQ7UMDJVYN6QE14Q`);
@@ -48,13 +52,14 @@ class Grafic extends Component {
 
                 });
 
-                this.setState({timeSeries: [...listItems] });
-                console.log(this.state.timeSeries);
+                this.setState({ timeSeries: [...listItems] });
+                this.setState({ loading: false });
             }
 
         } catch (error) {
             this.setState({ errorMessage: error });
             console.log(this.state.errorMessage);
+            this.setState({ loading: false });
         }
     }
 
@@ -63,22 +68,27 @@ class Grafic extends Component {
         const colors = ['#7b4173', '#de9ed6']
         const keys = ['high', 'low']
 
-        return (
-            <Container>
-                <TextLow>LOW</TextLow>
-                <TextHigh>HIGH</TextHigh>
+        if (this.state.loading) {
+            return (<Loading title="Aguarde, gerando grafico..." />)
 
-                <StackedAreaChart
-                    style={{ height: 250, paddingVertical: 10 }}
-                    data={ this.state.timeSeries }
-                    keys={keys}
-                    colors={colors}
-                    showGrid={true}
-                />
+        } else {
+            return (
+                <Container>
+                    <TextLow>LOW</TextLow>
+                    <TextHigh>HIGH</TextHigh>
 
-                <Grid />
-            </Container>
-        );
+                    <StackedAreaChart
+                        style={{ height: 250, paddingVertical: 10 }}
+                        data={this.state.timeSeries}
+                        keys={keys}
+                        colors={colors}
+                        showGrid={true}
+                    />
+
+                    <Grid />
+                </Container>
+            );
+        }
     }
 }
 

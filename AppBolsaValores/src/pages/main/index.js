@@ -11,21 +11,23 @@ import {
     PickerEmpresa,
     ContainerPicker,
     ContainerItemFlatList,
-    ButtonFilter,
-    TitleButtonFilter,
     ContainerList,
-    ContainerAnimation,
     TextVolume,
     ContainerVolume,
     ButtonViewGraphic,
     TextViewGraphic,
     TextHigh,
     TextLow,
-    TextDateNow
+    TextDateNow,
+    ContainerDatePicker,
+    TitleEmpresa,
+    ButtonView,
+    TitleButton
 } from './styles';
 import Api from '../../services/api';
 import Loader from '../../components/loading';
 import moment from 'moment';
+import DatePicker from 'react-native-datepicker';
 
 
 class Main extends Component {
@@ -35,12 +37,14 @@ class Main extends Component {
 
         this.state = {
             selectSymbol: '',
-            searchFilter: 'MSFT',
+            searchFilter: '',
             companies: [],
             error: '',
             loading: false,
             timesSeries: [],
             metaData: null,
+            dateInit: '',
+            dateEnd: '',
             widthAnimation: new Animated.Value(80),
             heightAnimation: new Animated.Value(10),
             opAnimada: new Animated.Value(0),
@@ -49,7 +53,6 @@ class Main extends Component {
 
         this.bindMethods();
     }
-
 
 
     componentDidMount() {
@@ -76,14 +79,13 @@ class Main extends Component {
     }
 
     listCompanies = async () => {
-        try {
 
-            if (this.state.searchFilter != "") {
+        try {
+            if (this.state.searchFilter != '') {
                 const response = await Api.get(`/query?function=SYMBOL_SEARCH&keywords=${this.state.searchFilter}&apikey=OQ7UMDJVYN6QE14Q`);
 
                 this.setState({ companies: [...response.data.bestMatches] });
-            } else {
-                alert('Informe o nome da empresa');
+                this.setState({ loading: false });
             }
 
         } catch (error) {
@@ -95,49 +97,74 @@ class Main extends Component {
     SearchTimeSeriesDaily = async () => {
         try {
 
-            const dailyNewArray = [];
-
             if (this.state.selectSymbol != '') {
 
+                this.setState({ loading: true });
+
+                const dailyNewArray = [];
+                console.log(`Filter: ${this.state.selectSymbol}`);
+
+                
                 console.log(`/query?function=TIME_SERIES_DAILY&symbol=${this.state.selectSymbol}&apikey=OQ7UMDJVYN6QE14Q`);
 
                 const response = await Api.get(`/query?function=TIME_SERIES_DAILY&symbol=${this.state.selectSymbol}&apikey=OQ7UMDJVYN6QE14Q`);
-
-                const { ...MetaData } = response.data["Meta Data"];
                 const { ...timesDaily } = response.data["Time Series (Daily)"];
+                const { ...metaData } = response.data['Meta Data'];
+
+                this.setState({ metaData });
 
                 const timesDailyArray = Object.values(timesDaily);
                 const timesDailyKeys = Object.keys(timesDaily);
 
+                if (timesDailyKeys.length > 0) {
 
-                for (let i = 0; i < timesDailyKeys.length; i++) {
+                    let dateFilterInit = `${this.state.dateInit.split('-')[2]}-${this.state.dateInit.split('-')[1]}-${this.state.dateInit.split('-')[0]}`;
+                    let dateFilterEnd = `${this.state.dateEnd.split('-')[2]}-${this.state.dateEnd.split('-')[1]}-${this.state.dateEnd.split('-')[0]}`;
 
-                    dailyNewArray.push({
-                        key: i,
-                        dateNow: timesDailyKeys[i],
-                        high: timesDailyArray[i]['2. high'],
-                        low: timesDailyArray[i]['3. low'],
-                        volume: timesDailyArray[i]['5. volume']
-                    });
+                    const newDailyKeys = timesDailyKeys.filter(item => item >= dateFilterInit && item <= dateFilterEnd);
+                    console.log(newDailyKeys);
 
+                    for (let i = 0; i < newDailyKeys.length; i++) {
+
+                        dailyNewArray.push({
+                            key: i,
+                            dateNow: timesDailyKeys[i],
+                            high: timesDailyArray[i]['2. high'],
+                            low: timesDailyArray[i]['3. low'],
+                            volume: timesDailyArray[i]['5. volume']
+                        });
+
+                    }
+
+                    this.setState({ timesSeries: [...dailyNewArray] });
                 }
 
-                this.setState({ timesSeries: [...dailyNewArray] });
-                //console.log(this.state.timesSeries);
-
+                this.setState({ loading: false });
+            } else {
+                alert('É necessário selecionar uma empresa');
             }
         } catch (error) {
             this.setState({ error });
+            this.setState({ loading: false });
             console.log(error);
         }
     }
 
     pickerValueSelected = async (itemValue, itemIndex) => {
-        console.log(itemValue, itemIndex);
-
         this.setState({ selectSymbol: itemValue });
+    }
 
-        await this.SearchTimeSeriesDaily();
+    searchSymbol = async (valueSelected) => {
+        this.setState({ searchFilter: valueSelected.nativeEvent.text });
+        await this.listCompanies();
+    }
+
+    selectDateInit = (dateInit) => {
+        this.setState({ dateInit });
+    }
+
+    selectDateEnd = (dateEnd) => {
+        this.setState({ dateEnd });
     }
 
     renderItem = ({ item }) => {
@@ -160,59 +187,87 @@ class Main extends Component {
         )
     }
 
+    SearchSeriesDaily = async () => {
+        await this.SearchTimeSeriesDaily();
+    }
+
     bindMethods = () => {
         this.listCompanies = this.listCompanies.bind(this);
         this.SearchTimeSeriesDaily = this.SearchTimeSeriesDaily.bind(this);
         this.pickerValueSelected = this.pickerValueSelected.bind(this);
         this.LoadAnimation = this.LoadAnimation.bind(this);
+        this.searchSymbol = this.searchSymbol.bind();
     }
 
     render() {
-
         let companiesPicker = this.state.companies.map((itemValue, itemKey) => (
             <Picker.Item key={itemKey}
                 value={itemValue['1. symbol']}
                 label={itemValue['2. name']} />
         ))
 
-        return (
-            <Container>
+        if (this.state.loading) {
+            return <Loader title="Aguarde, carrendo dados..." />
+        } else {
+            return (
 
-                <ContainerPicker>
-                    <PickerEmpresa
-                        selectedValue={this.state.selectSymbol}
-                        onValueChange={(itemValue, itemIndex) => { this.pickerValueSelected(itemValue, itemIndex) }}>
+                <Container>
 
-                        {
-                            companiesPicker
-                        }
+                    <ContainerDatePicker>
 
-                    </PickerEmpresa>
-                </ContainerPicker>
+                        <DatePicker
+                            style={{ width: 140 }}
+                            date={this.state.dateInit}
+                            format="DD-MM-YYYY"
+                            onDateChange={this.selectDateInit} />
 
-                <ContainerPesquisarEmpresa>
-                    <PesquisarEmpresa
-                        underlineColorAndroid="transparent"
-                        placeholder="Pesquisar empresa ex.MSFT"
-                        onChangeText={(value) => { this.setState({ searchFilter: value }) }} />
+                        <DatePicker
+                            style={{ width: 140 }}
+                            date={this.state.dateEnd}
+                            format="DD-MM-YYYY"
+                            onDateChange={this.selectDateEnd} />
 
-                    <ButtonFilter onPress={() => this.listCompanies()}>
-                        <TitleButtonFilter tamanho={15}>Filtrar empresa</TitleButtonFilter>
-                    </ButtonFilter>
+                    </ContainerDatePicker>
 
-                </ContainerPesquisarEmpresa>
+                    <TitleEmpresa>Seleconar empresa</TitleEmpresa>
 
-                <ContainerList>
-                    <FlatList
-                        data={this.state.timesSeries}
-                        renderItem={this.renderItem}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={item => `${item.dateNow}`}
-                    />
-                </ContainerList>
+                    <ContainerPicker>
+                        <PickerEmpresa
+                            selectedValue={this.state.selectSymbol}
+                            onValueChange={(itemValue, itemIndex) => { this.pickerValueSelected(itemValue, itemIndex) }}>
 
-            </Container>
-        );
+                            {
+                                companiesPicker
+                            }
+
+                        </PickerEmpresa>
+                    </ContainerPicker>
+
+
+                    <ContainerPesquisarEmpresa>
+
+                        <PesquisarEmpresa
+                            underlineColorAndroid="transparent"
+                            placeholder="Pesquisar empresa ex.MSFT"
+                            onChange={(value) => this.searchSymbol(value)} />
+
+                        <ButtonView onPress={this.SearchSeriesDaily}><TitleButton>Consultar</TitleButton></ButtonView>
+                    </ContainerPesquisarEmpresa>
+
+
+                    <ContainerList>
+                        <FlatList
+                            data={this.state.timesSeries}
+                            renderItem={this.renderItem}
+                            showsVerticalScrollIndicator={false}
+                            keyExtractor={item => `${item.dateNow}`}
+                        />
+                    </ContainerList>
+
+                </Container>
+            );
+        }
+
     }
 }
 

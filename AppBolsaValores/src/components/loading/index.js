@@ -1,9 +1,13 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Loading = () => (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(238,232,170,0.3)' }}>
-        <Text style={{ fontSize: 25, fontWeight: '400'}}>Aguarde...</Text>
+import styles from './styles';
+
+const { container, title } = styles;
+
+const Loading = (props) => (
+    <View style={ container }>
+        <Text style={ title }>{props.title}</Text>
     </View>
 );
 

@@ -32,7 +32,6 @@ export const PickerEmpresa = styled.Picker`
 
 export const ContainerPesquisarEmpresa = styled.View`
   width: 100%;
-  height: 100px;
   border-radius: 10px;
   align-items: center;
   margin-bottom: 15px;
@@ -79,14 +78,6 @@ export const ContainerItemFlatList = styled.View`
   margin-bottom: 20px;
 `;
 
-export const projecButton = styled.TouchableOpacity`
-  width: 100%;
-  background-color: #115588;
-  border-radius: 10px;
-  margin-top: 12px;
-  padding: 9px;
-  align-items: center;
-`;
 
 export const ContainerAnimation = styled.View`
 height: 50px;
@@ -95,9 +86,8 @@ width: 100%;
 
 export const TextVolume = styled.Text`
   color: #000;
-  font-size: 17px;
+  font-size: 15px;
   text-align: left;
-  font-weight: bold;
   text-transform: uppercase;
 `;
 
@@ -116,7 +106,7 @@ export const TextViewGraphic = styled.Text`
 
 export const ButtonViewGraphic = styled.TouchableOpacity`
   width: 100%;
-  background-color: #115588;
+  background-color: rgba(123,104,238,0.9);
   border-radius: 10px;
   margin-top: 12px;
   padding: 9px;
@@ -138,5 +128,35 @@ export const TextLow = styled.Text`
 export const TextDateNow = styled.Text`
   color: #000;
   font-size: 15px;
+`;
+
+export const ContainerDatePicker = styled.View`
+  flex-direction: row;
+  padding: 4px;
+  justify-content: space-around;
+`;
+
+export const TitleEmpresa = styled.Text`
+  color: #000;
+  font-size: 15px;
   font-weight: bold;
+`;
+
+export const TotalItems = styled.Text`
+  color: #000;
+  font-size: 15px;
+`;
+
+export const ButtonView = styled.TouchableOpacity`
+  width: 100%;
+  background-color: #115588;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  align-items: center;
+`;
+
+export const TitleButton = styled.Text`
+  color: #FFF;
+  font-size: 15px;
 `;
