@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     FlatList,
     Picker,
-    Text,
     Animated
 } from 'react-native';
 import {
@@ -26,6 +25,7 @@ import {
 } from './styles';
 import Api from '../../services/api';
 import Loader from '../../components/loading';
+import moment from 'moment';
 
 
 class Main extends Component {
@@ -144,7 +144,7 @@ class Main extends Component {
         return (
             <ContainerItemFlatList>
 
-                <TextDateNow>DATA: {item.dateNow}</TextDateNow>
+                <TextDateNow>DATA: {moment(item.dateNow).format('DD-MM-YYYY')}</TextDateNow>
                 <TextHigh>HIGH: {item.high} </TextHigh>
                 <TextLow>LOW: {item.low}</TextLow>
 
