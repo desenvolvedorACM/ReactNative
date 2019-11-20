@@ -38,6 +38,7 @@ signingConfig signingConfigs.release
 Entrar dentro da pasta do android e rodar o comando abaixo:
 
 gradlew assembleRelease
+gradlew bundleRelease - via bundle com tamanho menor
 =================================
 chaveApp.keystore
 Alias: chaveApp
