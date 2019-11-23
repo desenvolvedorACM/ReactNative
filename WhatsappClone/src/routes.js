@@ -9,6 +9,7 @@ import Contato from './pages/Contato';
 import Conversas from './pages/Conversas';
 import Ligacoes from './pages/Ligacoes';
 import Conversa from './pages/Conversa';
+import Header from './components/Header';
 
 import padroes from './styles/default';
 
@@ -19,6 +20,7 @@ export default class App extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
+        <Header />
         <AppTabNavigator />
       </SafeAreaView>
     );
