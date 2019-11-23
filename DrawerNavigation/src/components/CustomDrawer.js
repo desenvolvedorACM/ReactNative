@@ -24,7 +24,7 @@ const CustomDrawer = props => (
             <TouchableOpacity
                 style={{ backgroundColor: '#666555' }}
                 underlineColor="transparent"
-                onPress={() => { this.props.navigation.navigate('Contato'); }}>
+                onPress={() => { props.navigation.navigate('Contato'); }}>
                 <Text style={{ margin: 10, color: '#FFF', textAlign: 'center' }}>Contato</Text>
             </TouchableOpacity>
         </View>

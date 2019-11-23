@@ -6,15 +6,14 @@ import Contato from './pages/contato';
 import CustomDrawer from './components/CustomDrawer';
 
 
-const drawerNavigator = createAppContainer(
+export default createAppContainer(
   createDrawerNavigator({
     Home: { screen: Home },
     Contato: { screen: Contato },
   }, {
     initialRouteName: 'Contato',
-    drawerBackgroundColor: '#373737',
+    drawerBackgroundColor: '#889999',
     contentComponent: CustomDrawer
   })
 );
 
-export default drawerNavigator;
