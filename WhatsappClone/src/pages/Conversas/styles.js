@@ -20,10 +20,6 @@ export default styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row'
     },
-    container_central: {
-        flex: 1,
-        justifyContent: 'space-evenly'
-    },
     ultima_mensagem_container: {
         flexDirection: 'row'
     },
@@ -31,6 +27,10 @@ export default styles = StyleSheet.create({
         color: 'gray',
         marginRight: 5,
         maxWidth: 60
+    },
+    container_esquerda: {
+        flex: 1,
+        justifyContent: 'space-evenly'
     },
     container_direita: {
         justifyContent: 'space-evenly',
