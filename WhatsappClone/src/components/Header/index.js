@@ -13,7 +13,8 @@ import IconEntypo from 'react-native-vector-icons/Entypo';
 const {
     container,
     cabecalho,
-    container_direita
+    container_direita,
+    font_icon
 } = styles;
 
 class Header extends Component {
@@ -24,13 +25,13 @@ class Header extends Component {
                 <Text style={cabecalho}> WhatsApp </Text>
                 <View style={container_direita}>
                     <TouchableOpacity>
-                        <IconFontAwesome name='search' color='white' font={30} />
+                        <IconFontAwesome name='search' color='white' style={font_icon} />
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <IconMaterialCommunityIcons name='message-reply-text' color='white' font={30} />
+                        <IconMaterialCommunityIcons name='message-reply-text' color='white' style={font_icon} />
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <IconEntypo name='dots-three-vertical' color='white' font={30} />
+                        <IconEntypo name='dots-three-vertical' color='white' style={font_icon} />
                     </TouchableOpacity>
                 </View>
             </View>

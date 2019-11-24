@@ -21,5 +21,8 @@ export default styles = StyleSheet.create({
      justifyContent: 'space-between',
      paddingRight: 10,
      alignItems: 'center'
+    },
+    font_icon: {
+        fontSize: 18
     }
 });
