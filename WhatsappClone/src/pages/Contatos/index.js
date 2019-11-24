@@ -7,35 +7,35 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
-import styles from './styles';
+
 import api from '../../services/Api';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import padroes from '../../styles/default';
 
-import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import styles from './styles';
 
 const {
   imagem,
   container_info,
   container_esquerda,
   container_direita,
-  ligacoes_container,
-  data_ligacao,
+  container_contato,
+  numero_container,
   nome,
-  container_ligacao,
-  margin_icon
+  numero,
+  icone_font_icon
 } = styles;
 
-class Ligacoes extends Component {
 
-  static navigationOptions = {
-    title: 'Ligações'
+class Contatos extends Component {
+
+  static navigationOption = () => {
+    header: null
   }
 
   renderItem = ({ item }) => {
     return (
-      <View style={container_ligacao}>
+      <View style={container_contato}>
         <Image source={item.imagem} style={imagem} />
 
         <View style={container_info}>
@@ -43,22 +43,15 @@ class Ligacoes extends Component {
           <View style={container_esquerda}>
             <Text style={nome}>{item.nome}</Text>
 
-            <View style={ligacoes_container}>
-
-              <IconMaterialCommunityIcons
-                style={[ margin_icon, { fontSize: 15}]}
-                name={item.call}
-                color={item.call === 'call-received' ? 'red' : padroes.cores.verde_claro} />
-
-              <Text numberOfLines={1} style={data_ligacao}>{item.data_ligacao}</Text>
+            <View style={numero_container}>
+              <Text style={numero}>{item.numero}</Text>
             </View>
           </View>
 
           <View style={container_direita}>
             <TouchableOpacity>
-              <Ionicons name={item.tipo_de_ligacao === 'cel' ? 'ios-call' : 'ios-videocam'}
-                color={padroes.cores.primaria_claro}
-                style={{ fontSize: 25}} />
+              <Ionicons name='md-person-add'
+                color={padroes.cores.verde_claro} style={ icone_font_icon } />
             </TouchableOpacity>
           </View>
 
@@ -74,7 +67,7 @@ class Ligacoes extends Component {
       <SafeAreaView>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={api.exemplo_de_ligacoes}
+          data={api.exemplo_de_conversas}
           keyExtractor={(item, index) => `list-item-${index}`}
           renderItem={this.renderItem}
         />
@@ -83,4 +76,4 @@ class Ligacoes extends Component {
   }
 }
 
-export default Ligacoes;
+export default Contatos;

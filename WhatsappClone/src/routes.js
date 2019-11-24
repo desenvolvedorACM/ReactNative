@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
-import Contato from './pages/Contato';
+import Contatos from './pages/Contatos';
 import Conversas from './pages/Conversas';
 import Ligacoes from './pages/Ligacoes';
 import Conversa from './pages/Conversa';
@@ -36,7 +36,7 @@ const AppTabNavigator = createAppContainer(
   createMaterialTopTabNavigator({
     Conversas: stackNavigator,
     Ligacoes,
-    Contato
+    Contatos
   }, {
     tabBarPosition: 'top',
     initialRouteName: 'Conversas',
