@@ -34,7 +34,7 @@ class Conversas extends Component {
 
   renderItem = ({ item }) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={ () => { this.props.navigation.navigate('Conversa', { perfil: item}) }}>
         <View style={container_conversas}>
           <Image source={item.imagem} style={imagem} />
 

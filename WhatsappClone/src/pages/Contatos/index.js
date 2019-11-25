@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import api from '../../services/Api';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import padroes from '../../styles/default';
 
 import styles from './styles';
@@ -29,7 +29,7 @@ const {
 
 class Contatos extends Component {
 
-  static navigationOption = () => {
+  static navigationOptions = () => {
     header: null
   }
 

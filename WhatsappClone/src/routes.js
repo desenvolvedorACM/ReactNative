@@ -53,3 +53,16 @@ const AppTabNavigator = createAppContainer(
     }
   })
 );
+
+stackNavigator.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+
+  let routeName = navigation.state.routes[navigation.state.index].routeName;
+  console.log(routeName);
+
+  if (routeName == 'Conversa') {
+    tabBarVisible = false;
+  }
+
+  return { tabBarVisible };
+}
