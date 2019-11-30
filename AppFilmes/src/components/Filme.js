@@ -22,7 +22,7 @@ const Filme = props => (
     <View style={container} >
     <TouchableHighlight
         onPress={() => alert("Filme: " + props.data.nome)}
-        underlayColor="blue" >
+        underlayColor="yellow" >
 
         <ImageBackground
             resizeMode="cover"
