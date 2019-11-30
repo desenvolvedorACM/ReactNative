@@ -4,15 +4,17 @@ import {
     Text,
     View,
     FlatList,
+    SafeAreaView
 } from 'react-native';
-import Api from './services/Api';
-import Filme from './components/Filme';
-import Loading from './components//Loading';
+import Api from '../services/Api';
+import Filme from '../components/Filme';
+import Loading from '../components/Loading';
 
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginTop: 20
     },
     header: {
         height: 60,
@@ -63,7 +65,7 @@ class App extends Component {
             )
         } else {
             return (
-                <View style={container}>
+                <SafeAreaView style={container}>
                     <View style={header}>
                         <Text style={headerText}> Filmes recomendados </Text>
                     </View>
@@ -73,7 +75,7 @@ class App extends Component {
                         keyExtractor={item => item.id.toString()}
                         renderItem={({ item }) => <Filme data={item} />}
                     />
-                </View>
+                </SafeAreaView>
             );
         }
 

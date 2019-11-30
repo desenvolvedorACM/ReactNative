@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-    Platform,
     StyleSheet,
     Text,
     View,
@@ -19,39 +18,30 @@ const styles = StyleSheet.create({
 const { container } = styles;
 
 
-class Filme extends Component {
+const Filme = props => (
+    <View style={container} >
+    <TouchableHighlight
+        onPress={() => alert("Filme: " + props.data.nome)}
+        underlayColor="blue" >
 
-    constructor(props) {
-        super(props);
-    }
-    
-    render() {
-        return (
-            <View style={container} >
-                <TouchableHighlight
-                    onPress={() => alert("Filme: " + this.props.data.nome)}
-                    underlayColor="blue" >
+        <ImageBackground
+            resizeMode="cover"
+            source={{ uri: props.data.foto }}
+            style={{ height: 150, marginBottom: 5 }}>
 
-                    <ImageBackground
-                        resizeMode="cover"
-                        source={{ uri: this.props.data.foto }}
-                        style={{ height: 150, marginBottom: 5 }}>
-
-                        <View style={{
-                            flex: 1,
-                            alignItems: 'flex-start',
-                            justifyContent: 'flex-end',
-                            paddingLeft: 10,
-                            paddingBottom: 10
-                        }}>
-                            <Text style={{ fontSize: 23, color: '#FFFFFF', fontWeight: 'bold' }}>{this.props.data.nome}</Text>
-                        </View>
-                    </ImageBackground>
-
-                </TouchableHighlight>
+            <View style={{
+                flex: 1,
+                alignItems: 'flex-start',
+                justifyContent: 'flex-end',
+                paddingLeft: 10,
+                paddingBottom: 10
+            }}>
+                <Text style={{ fontSize: 23, color: '#FFFFFF', fontWeight: 'bold' }}>{ props.data.nome}</Text>
             </View>
-        );
-    }
-}
+        </ImageBackground>
+
+    </TouchableHighlight>
+</View>
+);
 
 export default Filme;
