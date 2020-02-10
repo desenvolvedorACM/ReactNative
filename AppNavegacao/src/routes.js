@@ -1,18 +1,19 @@
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
+import Main from '../src/pages/Main';
+import contato from '../src/pages/Contato';
+import cadastro from '../src/pages/Cadastro';
 
-import Main from './pages/Main';
-import Contato from './pages/Contato';
 
 export default createAppContainer(
     createStackNavigator({
-        Main,
-        Contato
+        Home: { screen: Main },
+        contato: { screen: contato },
+        cadastro: { screen: cadastro },
     },
         {
-            navigationOptions: {
+            navegationOptions: {
                 headerStyle: {
                     backgroundColor: '#112255'
                 },
@@ -22,5 +23,7 @@ export default createAppContainer(
                     flex: 1
                 }
             },
-            mode: 'card'
+            mode: 'modal'
         }));
+
+

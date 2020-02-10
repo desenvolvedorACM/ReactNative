@@ -22,6 +22,7 @@ const {
     cardInfo,
     userInfo,
     name } = styles;
+    
 import SocialHeader from '../../components/socialHeader';
 import Loading from '../../components/loading';
 
