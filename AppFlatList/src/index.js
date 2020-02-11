@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  StatusBar,
   FlatList,
   StyleSheet
 } from 'react-native';
+import './config/StatusBarConfig';
 
 
 
@@ -83,7 +83,7 @@ class App extends Component {
     }
   }
 
-  renderItem = (item) => (
+  renderItem = ({ item }) => (
     <View style={sectionContainer}>
       <Text style={sectionText}>ID: {item.id}</Text>
       <Text style={sectionText}>NOME: {item.nome}</Text>
@@ -94,13 +94,14 @@ class App extends Component {
   render() {
     return (
       <View style={container}>
-        <StatusBar barStyle="light-content" backgroundColor="#FF8899" />
+
         <View style={sectionHeader}>
-          <Text style={sectionHeaderText}>HEADER</Text>
+          <Text style={sectionHeaderText}>FLAT LIST</Text>
         </View>
+
         <FlatList
           data={this.state.listaAgenda}
-          renderItem={({ item }) => this.renderItem(item)} />
+          renderItem={ this.renderItem } />
       </View>
     );
   }
