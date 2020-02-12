@@ -12,7 +12,7 @@ import './config/StatusBarConfig';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent:'center',
+    alignContent: 'center',
     justifyContent: 'center'
   },
   sectionContainer: {
@@ -45,7 +45,13 @@ const styles = StyleSheet.create({
 });
 
 
-const { container, sectionContainer, sectionText, sectionHeader, sectionHeaderText } = styles;
+const {
+  container,
+  sectionContainer,
+  sectionText,
+  sectionHeader,
+  sectionHeaderText
+} = styles;
 
 
 class App extends Component {
@@ -101,7 +107,7 @@ class App extends Component {
 
         <FlatList
           data={this.state.listaAgenda}
-          renderItem={ this.renderItem } />
+          renderItem={this.renderItem} />
       </View>
     );
   }

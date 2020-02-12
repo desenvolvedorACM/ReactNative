@@ -5,28 +5,28 @@ export default class contato extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
-            title: 'Contato - ' + navigation.getParam('nome', 'Alex'),
+            title: `Seu nome: ${navigation.getParam('nome', '')}`,
             headerStyle: {
-                backgroundColor: '#000'
+                backgroundColor: '#FFF'
             },
-            headerTintColor: '#FFF'
+            headerTintColor: '#000'
         }
     }
 
     render() {
         const { nome, idade } = this.props.navigation.state.params;
-        
+        const nome1 = this.props.navigation.getParam('nome', '');
+
         return (
-            <View style={{ flex: 1, backgroundColor: '#228888', padding: 10 }}>
-                <View style={{ padding: 12, margintop: 15, alignItems: 'flex-start'}}>
-                    <Text style={{ textAlign: 'center', fontSize: 20 }}> contato </Text>
+            <View style={{ flex: 1, padding: 10 }}>
+
+                <View style={{ padding: 12, margintop: 15, alignItems: 'flex-start' }}>
 
                     <Text style={{ textAlign: 'center', fontSize: 20 }}> Nome: {nome} </Text>
                     <Text style={{ textAlign: 'center', fontSize: 20 }}> Idade: {idade} </Text>
-
                 </View>
-                
-                <Button title="Cadastro" onPress={() => { this.props.navigation.navigate('cadastro'); }} />
+
+                <Button title="Voltar cadastro" onPress={() => { this.props.navigation.navigate('cadastro'); }} />
             </View>
         )
     }

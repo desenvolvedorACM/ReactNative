@@ -19,8 +19,8 @@ export default createAppContainer(
                 },
                 headerTintColor: '#FFF',
                 headerTitleStyle: {
-                    textAlign: "center",
-                    flex: 1
+                    fontWeight: 'bold',
+                    textAlign: "center"
                 }
             },
             mode: 'modal'
