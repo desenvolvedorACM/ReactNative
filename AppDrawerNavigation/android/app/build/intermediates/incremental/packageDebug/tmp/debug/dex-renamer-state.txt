@@ -1,0 +1,4 @@
+#Mon Feb 10 16:40:52 BRST 2020
+base.0=D\:\\Desenvolvimento\\Mobile\\ReactNative\\AppDrawerNavigation\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,2 +1,11 @@
-npm install --save react-navigation-drawer react-native-reanimated react-native-gesture-handler
-yarn add react-navigation-drawer react-native-reanimated react-native-gesture-handler
+npm install --save react-navigation react-navigation-drawer react-native-reanimated react-native-gesture-handler
+yarn add react-navigation react-navigation-drawer react-native-reanimated react-native-gesture-handler
+
+
+npm install react-navigation --save
+npm install react-native-gesture-handler --save
+npm install react-navigation-drawer --save
+npm install react-native-reanimated --save
+react-native link react-native-gesture-handler
+
+Observação: A partir da versão 0.60 do React Native, não é preciso fazer link, o link é automático.
