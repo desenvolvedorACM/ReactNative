@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, Button, Image } from 'react-native';
 
+import styles from './styles';
 
-console.disableYellowBox = true;
+const { container } = styles;
 
 export default class Home extends Component {
+    
     static navigationOptions = {
         drawerLabel: 'Home-inicio',
         drawerIcon: ({ tintColor }) => (
@@ -15,7 +17,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#4477EE', padding: 10, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={ container }>
                 <Text> Home </Text>
                 <View style={{ flexDirection: 'row', margin: 5 }}>
                     <Button title="Contato" onPress={() => this.props.navigation.navigate('Contato')} />

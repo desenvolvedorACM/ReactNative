@@ -1,0 +1,2 @@
+npm install --save react-navigation-drawer react-native-reanimated react-native-gesture-handler
+yarn add react-navigation-drawer react-native-reanimated react-native-gesture-handler
