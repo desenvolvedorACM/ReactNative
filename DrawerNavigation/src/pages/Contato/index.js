@@ -18,7 +18,7 @@ Contato.navigationOptions = {
     drawerLabel: 'Contato-inicio',
     drawerIcon: ({ tintColor }) => (
         <Image
-            source={require('../asses/contato_ativo.png')}
+            source={require('../../assets/contato_ativo.png')}
             style={[{ width: 30, height: 30 }, { tintColor: tintColor }]} />
     )
 }

@@ -11,7 +11,11 @@ const drawerNavigator = createDrawerNavigator({
   Contato: { screen: Contato },
 }, {
   initialRouteName: 'Contato',
-  drawerBackgroundColor: '#889999',
+  drawerBackgroundColor: '#FFF',
+  contentOptions: {
+    activeTintColor: 'red',
+    activeBackgroundColor: '#CCC'
+  },
   contentComponent: CustomDrawer
 });
 

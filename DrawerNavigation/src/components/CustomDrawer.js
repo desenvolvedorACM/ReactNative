@@ -6,14 +6,14 @@ import {
     ScrollView,
     TouchableOpacity
 } from 'react-native';
-import { DrawerItems } from 'react-navigation';
+import { DrawerItems } from 'react-navigation-drawer';
 
 
 const CustomDrawer = props => (
     <View style={{ flex: 1 }}>
         <View style={{ width: '100%', height: 75, marginTop: 25, justifyContent: 'center', alignItems: 'center' }}>
             <Image source={require('../assets/perfil.png')} style={{ width: 65, height: 65 }} />
-            <Text style={{ fontSize: 18, marginTop: 6, color: '#FFF' }}> Bem vindo alexandre</Text>
+            <Text style={{ fontSize: 18, marginTop: 6, color: '#000' }}> Bem vindo alexandre</Text>
         </View>
 
         <ScrollView style={{ marginTop: 15 }}>
