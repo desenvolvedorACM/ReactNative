@@ -10,7 +10,7 @@ export default class Home extends Component {
     static navigationOptions = {
         drawerLabel: 'Home-inicio',
         drawerIcon: ({ tintColor }) => (
-            <Image source={require('../img/home_ativo.png')}
+            <Image source={require('../assets/home_ativo.png')}
                 style={[{ width: 30, height: 30 }, { tintColor: tintColor }]} />
         )
     }
