@@ -13,7 +13,14 @@ const drawerNavigator = createDrawerNavigator(
         Settings
     },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Home',
+        contentOptions: {
+            activeTintColor: '#FFF',
+            activeBackgroundColor: '#EE4455',
+            labelStyle: {
+                fontSize: 14
+            }
+        }
     }
 );
 

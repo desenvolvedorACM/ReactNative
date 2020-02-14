@@ -1,0 +1,4 @@
+
+yarn add jetifier -D ou npm install --save-dev jetifier
+npm install --save jetifier
+npx jetify
