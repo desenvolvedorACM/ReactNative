@@ -2,21 +2,27 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    ViewPagerAndroid,
     StyleSheet
 } from 'react-native';
+import ViewPager from '@react-native-community/viewpager';
 
 const styles = StyleSheet.create({
     viewPager: {
         flex: 1
     },
-    pageStyle: {
+    page1: {
         alignItems: 'center',
         padding: 20,
+        backgroundColor: '#6688FF'
+    },
+    page2: {
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: '#6644FF'
     }
 });
 
-const { viewPager, pageStyle } = styles;
+const { viewPager, page1, page2} = styles;
 
 class App extends Component {
     constructor(props) {
@@ -29,10 +35,10 @@ class App extends Component {
             <ViewPagerAndroid
                 style={viewPager}
                 initialPage={0}>
-                <View style={pageStyle} key="1">
+                <View style={page1} key="1">
                     <Text>First page</Text>
                 </View>
-                <View style={pageStyle} key="2">
+                <View style={page2} key="2">
                     <Text>Second page</Text>
                 </View>
             </ViewPagerAndroid>
