@@ -2,27 +2,27 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native';
-import ViewPager from '@react-native-community/viewpager';
+import ViewPagerAndroid from '@react-native-community/viewpager';
+import './config/StatusBarConfig';
+
 
 const styles = StyleSheet.create({
-    viewPager: {
+    viewPagerContainer: {
         flex: 1
     },
-    page1: {
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#6688FF'
-    },
-    page2: {
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#6644FF'
+    pager: {
+        flex: 1,
+        padding: 10
     }
 });
 
-const { viewPager, page1, page2} = styles;
+const {
+    viewPagerContainer,
+    pager
+} = styles;
 
 class App extends Component {
     constructor(props) {
@@ -32,15 +32,18 @@ class App extends Component {
 
     render() {
         return (
-            <ViewPagerAndroid
-                style={viewPager}
-                initialPage={0}>
-                <View style={page1} key="1">
-                    <Text>First page</Text>
-                </View>
-                <View style={page2} key="2">
-                    <Text>Second page</Text>
-                </View>
+
+            <ViewPagerAndroid style={viewPagerContainer}
+                initialPage={0}
+                showPageIndicator={false}
+                orientation="horizontal"
+                transitionStyle="curl">
+
+                <Image source={require('../src/assets/slider1.png')} />
+                <Image source={require('../src/assets/slider2.png')} />
+                <Image source={require('../src/assets/slider3.png')} />
+                <Image source={require('../src/assets/slider4.png')} />
+
             </ViewPagerAndroid>
         );
     }
