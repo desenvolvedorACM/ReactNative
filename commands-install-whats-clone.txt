@@ -1,3 +1,0 @@
-﻿yarn add react-native-gesture-handler react-native-reanimated react-navigation react-navigation-stack 
-react-navigation-tabs react-native-screens react-native-vector-icons
-
