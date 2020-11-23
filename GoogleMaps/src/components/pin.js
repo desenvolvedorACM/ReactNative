@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 const { viewMarker, textoMarker } = styles;
 
 
-class Pin extends Component {
+export default class Pin extends Component {
     constructor(props) {
         super(props);
     }
@@ -35,4 +35,4 @@ class Pin extends Component {
         )
     }
 }
-export default Pin;
+

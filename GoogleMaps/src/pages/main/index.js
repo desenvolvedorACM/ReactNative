@@ -6,8 +6,17 @@ import {
 } from 'react-native';
 import styles from './styles';
 
-const { container, Botao1, Botao2, Botao3, Botao4,Botao5, containerPrincipal, texto } = styles;
+const {
+  container,
+  Botao1,
+  Botao2,
+  Botao3,
+  Botao4,
+  Botao5,
+  containerPrincipal,
+  texto } = styles;
 
+  
 const Main = ({ navigation }) =>
   (
     <View style={container}>
