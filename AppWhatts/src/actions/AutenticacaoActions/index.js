@@ -13,7 +13,7 @@ import {
     CADASTRO_EM_ANDAMENTO
 } from '../Types';
 
-export const modificaEmail = (texto) => {
+export function modificaEmail(texto) {
     return {
         type: MODIFICA_EMAIL,
         payload: texto
@@ -37,7 +37,7 @@ export const modificaNome = (texto) => {
 export const cadastraUsuario = ({ nome, email, senha }) => {
     return dispatch => {
         dispatch({ type: CADASTRO_EM_ANDAMENTO });
-        
+
         firebase.auth().createUserWithEmailAndPassword(email, senha)
             .then(user => {
                 let emailB64 = b64.encode(email);
@@ -51,7 +51,7 @@ export const cadastraUsuario = ({ nome, email, senha }) => {
 
 
 const cadastroUsuarioSucesso = (dispatch) => {
-    dispatch({ type: CADASTRO_USUARIO_SUCESSO});
+    dispatch({ type: CADASTRO_USUARIO_SUCESSO });
     Actions.boasVindas();
 }
 
@@ -62,7 +62,7 @@ const cadastroUsuarioErro = (dispatch, error) => {
 export const autenticarUsuario = ({ email, senha }) => {
     return dispatch => {
         dispatch({ type: LOGIN_EM_ANDAMENTO });
-        
+
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(value => loginUsuarioSucesso(dispatch, value))
             .catch(erro => loginUsuarioErro(erro, dispatch));
