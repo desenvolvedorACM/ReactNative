@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, ImageBackground, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, ImageBackground, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import {
     modificaEmail,
@@ -44,7 +44,9 @@ class formCadastro extends Component {
 
     render() {
         return (
-            <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../../imgs/bg.png')}>
+            <ImageBackground
+                style={{ width: '100%', height: '100%' }}
+                source={require('../../assets/imgs/bg.png')}>
                 <View style={{ flex: 1, padding: 10 }}>
                     <View style={{ flex: 2, justifyContent: 'center' }}>
                         <TextInput

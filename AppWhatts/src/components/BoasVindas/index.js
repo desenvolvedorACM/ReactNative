@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const imageBg = require('../../imgs/bg.png');
-const imageLogo = require('../../imgs/logo.png');
+const imageBg = require('../../assets/imgs/bg.png');
+const imageLogo = require('../../assets/imgs/logo.png');
 
 const styles = StyleSheet.create({
     contentLogo: {
